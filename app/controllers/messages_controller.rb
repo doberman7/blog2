@@ -4,7 +4,9 @@ class MessagesController < ApplicationController
   end
 
   def create
-    render "tags/index"
+    p "_" * 50
+    p "create messages"
+    # render "tags/index"
   end
 
 

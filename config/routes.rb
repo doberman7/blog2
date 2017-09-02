@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  post '/users/new'
+  get '/users/new'
+  post '/users/create', to: "users#create", as: 'user_create'
 
   get 'users/index'
   get 'messages/index'
@@ -13,8 +14,7 @@ Rails.application.routes.draw do
   resources :messages
       #   Prefix Verb   URI Pattern                  Controller#Action
       # users_index GET    /users/index(.:format)       users#index
-      # messages_index GET    /messages/index(.:format)    messages#index
-      #   root GET    /                            users#index
+
       # tags_index GET    /tags/index(.:format)        tags#index
       #  users GET    /users(.:format)             users#index
       #        POST   /users(.:format)             users#create
@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       #        PATCH  /users/:id(.:format)         users#update
       #        PUT    /users/:id(.:format)         users#update
       #        DELETE /users/:id(.:format)         users#destroy
+
+
+
       #   tags GET    /tags(.:format)              tags#index
       #        POST   /tags(.:format)              tags#create
       # new_tag GET    /tags/new(.:format)          tags#new

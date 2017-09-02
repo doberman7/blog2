@@ -1,21 +1,26 @@
 class UsersController < ApplicationController
   def index
   end
+  # meotodo al dar click en sign up
   def new
-    p "+" * 50
-    p params
-    if params[:authenticity_token]
+  end
 
-      @user = User.new(name: params[:name], email: params[:email])
-      if @user.save
-        p "salvado"
-      else
-        render 'new'
-      end
+  # metodo en vista modal
+  def create
 
+    @user = User.new(name: params[:name], email: params[:email])
+    if @user.save
+      @messages= Message.all
+      render 'messages/index'
+    else
+      render 'new'
     end
-    # "authenticity_token"=>"FHjoi/wQvnHPYvxw6Wbp5tjU/Ml5foR6ECBZLUr1kVeF9LceNH0DqoooqdDXMpZ/yjRARI+mu+kH+gfURCxSBw==", "user"=>{"name"=>"name", "email"=>"email@email.com", "password"=>"123456", "password_confirmation"=>"123456"}, "commit"=>"Create my account", "controller"=>"users", "action"=>"new"} permitted: false>
 
+  end
+  # al recargar la vista de mensajes
+  def show
+    @messages= Message.all
+    render 'messages/index'
   end
 
 
