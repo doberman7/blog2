@@ -4,6 +4,7 @@ class CreateMessages < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :text
       t.string :autor
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

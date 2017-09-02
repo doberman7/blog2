@@ -3,7 +3,7 @@ class CreateTags < ActiveRecord::Migration[5.0]
     create_table :tags do |t|
       t.string :name
       t.text :text
-      t.references :message, foreign_key: true
+      # t.references :message, foreign_key: true
 
       t.timestamps
     end
