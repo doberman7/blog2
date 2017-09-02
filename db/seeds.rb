@@ -1,7 +1,7 @@
 require "faker"
 
 # 10.times do
-	p u = User.create!(name: Faker::Friends.character, email: Faker::Internet.email)
+	p u = User.create!(name: Faker::Friends.character, email: Faker::Internet.email, password: "123456", password_confirmation: "123456")
 # end
 
 10.times do
