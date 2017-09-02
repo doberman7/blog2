@@ -2,12 +2,6 @@
 @import "bootstrap";
 
 /* mixins, variables, etc. */
-
-$gray-medium-light: #eaeaea;
-
-
-
-
 //
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -15,16 +9,17 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
-.center {
+#btn_user_new{
+  
 }
 
-#wrap {
+.wrap {
     float: left;
     position: relative;
     left: 50%;
 }
 
-#content {
+.content {
     float: left;
     position: relative;
     left: -50%;
@@ -43,13 +38,13 @@ textarea {
 }
 
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-
-input {
-  height: auto !important;
-}
+// input, textarea, select, .uneditable-input {
+//   border: 1px solid #bbb;
+//   // width: 100%;
+//   margin-bottom: 15px;
+//   @include box_sizing;
+// }
+//
+// input {
+//   height: auto !important;
+// }
