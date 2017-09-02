@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 #   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
 #   "https://github.com/#{repo_name}.git"
 # end
+#  To set your Ruby version add this line to your Gemfile:
+# remote:        ruby '2.3.4'
 
 gem 'jquery-ui-rails'
 gem 'rails',        '5.0.4'
