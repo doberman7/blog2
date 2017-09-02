@@ -29,7 +29,11 @@
           <td><%=message.text%></td>
           <td><%=message.tags.count%></td>
           <td>
-              <%=message.tags.each {|t| t.name}%>
+              <%message.tags.each do |t|%>
+              <ul>
+                <li><%=t.name%></li>
+              </ul>
+              <%end%>
           </td>
         </tr>
       <% end %>
