@@ -17,6 +17,8 @@
     <thead>
       <tr>
         <th>Autor</th>
+        <th>Text</th>
+        <th>Número de tags</th>
         <th>Tags</th>
       </tr>
     </thead>
@@ -25,6 +27,10 @@
         <tr>
           <td><%=message.autor%></td>
           <td><%=message.text%></td>
+          <td><%=message.tags.count%></td>
+          <td>
+              <%=message.tags.each {|t| t.name}%>
+          </td>
         </tr>
       <% end %>
     </tbody>
