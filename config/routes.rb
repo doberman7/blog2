@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/users/new'
+
   get 'users/index'
   get 'messages/index'
 
