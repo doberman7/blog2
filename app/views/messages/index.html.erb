@@ -1,22 +1,24 @@
 <div class="wrap">
    <div class="content">
-   This will be centered
+   Ingresa tu mensaje
    <%= form_for :message, url: messages_path do |f| %>
    <p>
-     <%= f.label :title %><br>
+     <%= f.label :titulo %><br>
      <%= f.text_field :title %>
    </p>
 
    <p>
-     <%= f.label :text %><br>
+     <%= f.label :texto %><br>
      <%= f.text_area :text %>
    </p>
+   <p>Puede ingresar más de un tag, separandolos con comas ","</p>
+   <p>Ejemplo: tag1, tag2, etc</p>
    <p>
      <%= f.label :tag %><br>
      <%= f.text_field :tag %>
    </p>
    <p>
-     <%= f.submit %>
+     <%= f.submit "salvar mensaje", class: "btn btn-success"%>
    </p>
    <% end %>
    </div>
@@ -29,7 +31,8 @@
     <thead>
       <tr>
         <th>Autor</th>
-        <th>Text</th>
+        <th>Titulo</th>
+        <th>Texto</th>
         <th>Número de tags</th>
         <th>Tags</th>
       </tr>
@@ -38,6 +41,7 @@
       <%@messages.reverse.each do |message|%>
         <tr>
           <td><%=message.autor%></td>
+          <td><%=message.title%></td>
           <td><%=message.text%></td>
           <td><%=message.tags.count%></td>
           <td>

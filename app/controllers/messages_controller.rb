@@ -27,14 +27,16 @@ class MessagesController < ApplicationController
 					# create a new tag
 					tag = Tag.create(name: tag_name)
           MessageTag.create(message_id: m.id, tag_id: tag.id)
+        else
+          MessageTag.create(message_id: m.id, tag_id: tag.id)
+          # p "_" * 50
 				end
 			end
 
-      p "_" * 50
 
     end
-    
-    p "_" * 50
+
+    # p "_" * 50
     @messages= Message.all
     render 'messages/index'
 
