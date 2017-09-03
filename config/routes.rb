@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post '/users/user_log', to: "users#user_log", as: 'user_log'
+  get '/users/log', to: "users#log", as: 'log'
+
   get '/users/new'
   post '/users/create', to: "users#create", as: 'user_create'
 

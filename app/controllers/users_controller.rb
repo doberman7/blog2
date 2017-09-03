@@ -34,5 +34,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def user_log
+    p "+" * 50
+    p "log"
+  end
+
 
 end
