@@ -1,14 +1,14 @@
 class MessagesController < ApplicationController
   def index
-    p "-" * 50
-    p "index de mensajes"
+    # p "-" * 50
+    # p "index de mensajes"
     # p session[:user_id]
     @messages = Message.all
   end
 
   def create
-    p "_" * 50
-    p "create messages"
+    # p "_" * 50
+    # p "create messages"
     # "message"=>{"title"=>"", "text"=>"", "tag"=>""},
     title = params[:message][:title]
     text = params[:message][:text]
@@ -29,18 +29,16 @@ class MessagesController < ApplicationController
           MessageTag.create(message_id: m.id, tag_id: tag.id)
         else
           MessageTag.create(message_id: m.id, tag_id: tag.id)
-          # p "_" * 50
 				end
 			end
-
-
     end
-
-    # p "_" * 50
     @messages= Message.all
     render 'messages/index'
-
   end
 
+  def search
+    p "_" * 50
+    p "messages_search"
+  end
 
 end

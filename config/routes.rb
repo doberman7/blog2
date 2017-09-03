@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/messages/search', to: "messages#search", as: 'messages_search'
+
   post '/users/user_log', to: "users#user_log", as: 'user_log'
   get '/users/log', to: "users#log", as: 'log'
 

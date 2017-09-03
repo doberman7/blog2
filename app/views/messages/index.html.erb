@@ -24,7 +24,20 @@
    </div>
 </div>
 
-
+<div class="wrap">
+   <div class="content">
+   Busquedas
+   <%= form_for :search, url: messages_search_path, remote: true do |f| %>
+   <p>
+     <%= f.label :palabra %><br>
+     <%= f.text_field :word %>
+   </p>
+   <p>
+     <%= f.submit "buscar", class: "btn btn-info"%>
+   </p>
+   <% end %>
+   </div>
+</div>
 
 
 <table class="table">
