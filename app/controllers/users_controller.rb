@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   # password_confirmation:[:user][:password_confirmation]
     @user = User.new(name: params[:user][:name], email: params[:user][:email], password: params[:user][:password], password_confirmation: params[:user][:password_confirmation] )
     if @user.save || @errors != nil
+      session[:user_id] = @user.id
       @messages= Message.all
       render 'messages/index'
     else
@@ -25,10 +26,12 @@ class UsersController < ApplicationController
   end
   # al recargar la vista de mensajes
   def show
-
+    # p "- " * 50
     if @errors != nil
       @messages= Message.all
       render 'messages/index'
+      # p session[:user_id] = User.last
+      p "- " * 50
     else
       render "users/index"
     end
@@ -39,6 +42,7 @@ class UsersController < ApplicationController
     p "log"
     u = User.where(email: params[:user][:email], password: params[:user][:password] ).count
     if u != 0
+      session[:user_id] = User.where(email: params[:user][:email], password: params[:user][:password] ).first.id
       @messages= Message.all
       render 'messages/index'
     else
