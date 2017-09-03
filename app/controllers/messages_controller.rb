@@ -39,6 +39,13 @@ class MessagesController < ApplicationController
   def search
     p "_" * 50
     p "messages_search"
+    p @word = params[:search][:word]
+    @mtitle = Message.where(title: @word)
+    @mtext = Message.where(text: @word)
+    @mautor = Message.where(autor: @word)
+    @tname = Tag.where(name: @word)
+
+    p "_" * 50
   end
 
 end
