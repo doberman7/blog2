@@ -37,6 +37,14 @@ class UsersController < ApplicationController
   def user_log
     p "+" * 50
     p "log"
+    u = User.where(email: params[:user][:email], password: params[:user][:password] ).count
+    if u != 0
+      @messages= Message.all
+      render 'messages/index'
+    else
+      @errors = ["Nada, no estás en la BD"]
+      render "users/index"
+    end
   end
 
 

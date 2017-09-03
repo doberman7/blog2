@@ -3,6 +3,11 @@
 
 /* mixins, variables, etc. */
 //
+.errors{
+  background-color: greenyellow;
+  color: darkred;
+}
+
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
@@ -10,7 +15,7 @@
 }
 
 #btn_user_new{
-  
+
 }
 
 .wrap {
