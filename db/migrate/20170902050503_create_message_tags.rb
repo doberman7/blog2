@@ -1,8 +1,8 @@
 class CreateMessageTags < ActiveRecord::Migration[5.0]
   def change
     create_table :message_tags do |t|
-      t.belongs_to :message, index: true
-      t.belongs_to :tag, index: true
+      t.references :message,  foreign_key: true
+      t.references :tag,  foreign_key: true
 
       t.timestamps
     end
