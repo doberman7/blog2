@@ -1,7 +1,7 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h3 class="modal-title">Resultados para la busqueda<%=@word%></h3>
+      <h3 class="modal-title">Mensajes con la palabra clave: <%=@word%></h3>
     </div>
       <div class="modal-body">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -12,7 +12,7 @@
           <% if @mtitle.count > 0%>
             <thead class="titulo">
               <tr >
-                <th class="titulo">Título <%=@word%> está en los siguientes mensajes</th>
+                <th class="titulo">TÍTULO: <%=@word%> </th>
               </tr>
               <tr>
                 <th>Titulo</th>
@@ -46,7 +46,7 @@
           <% if @mtext.count > 0%>
             <thead class="texto">
               <tr>
-                  <th>Texto <%=@word%> está en los siguientes mensajes</th>
+                  <th>TEXTO: <%=@word%> </th>
                   <tr>
                     <th>Titulo</th>
                     <th>Texto</th>
@@ -81,7 +81,7 @@
           <% if @mautor.count > 0%>
             <thead class="autor">
               <tr>
-                  <th>Autor <%=@word%> conntiene los siguientes mensajes</th>
+                  <th>AUTOR: <%=@word%> </th>
                   <tr>
                     <th>Titulo</th>
                     <th>Texto</th>
@@ -116,7 +116,7 @@
           <% if @tname.count > 0%>
             <thead class="tag">
               <tr>
-                  <th>Tag <%=@word%> conntiene los siguientes mensajes</th>
+                  <th>TAG: <%=@word%> </th>
                   <tr>
                     <th>Titulo</th>
                     <th>Texto</th>
