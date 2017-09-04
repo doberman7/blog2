@@ -6,13 +6,42 @@
       <div class="modal-body">
         <table class="table">
           <%@mtitle.class%>
-          <%@mtext.class%>
-          <%@mautor.class%>
+
+
+          <% if @mtext.count > 0%>
+            <thead>
+              <tr>
+                  <th>Texto <%=@word%> está en los siguientes mensajes</th>
+                  <tr>
+                    <th>Titulo</th>
+                    <th>Texto</th>
+                    <th>Autor</th>
+                  </tr>
+              </tr>
+            </thead>
+            <tbody>
+                  <%@mtext.each do |me|%>
+                      <tr>
+                        <td><%=me.title%></td>
+                        <td><%=me.text%></td>
+                        <td><%=me.autor%></td>
+                      </tr>
+
+
+                  <% end %>
+          <% end%>
+
+
 
           <% if @mautor.count > 0%>
             <thead>
               <tr>
                   <th>Autor <%=@word%> conntiene los siguientes mensajes</th>
+                  <tr>
+                    <th>Titulo</th>
+                    <th>Texto</th>
+                    <th>Autor</th>
+                  </tr>
               </tr>
             </thead>
             <tbody>
@@ -33,6 +62,11 @@
             <thead>
               <tr>
                   <th>Tag <%=@word%> conntiene los siguientes mensajes</th>
+                  <tr>
+                    <th>Titulo</th>
+                    <th>Texto</th>
+                    <th>Autor</th>
+                  </tr>
               </tr>
             </thead>
             <tbody>
