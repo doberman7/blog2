@@ -43,6 +43,7 @@
 <table class="table">
     <thead>
       <tr>
+        <td>#</td>
         <th>Autor</th>
         <th>Titulo</th>
         <th>Texto</th>
@@ -51,8 +52,14 @@
       </tr>
     </thead>
     <tbody>
-      <%@messages.reverse.each do |message|%>
-        <tr>
+      <%@messages.reverse.each_with_index do |message, index|%>
+        <%if index % 2 == 0%>
+            <%clase = "inpar"%>
+        <%else%>
+            <%clase = "par"%>
+        <%end%>
+        <tr class="<%=clase%>">
+          <td ><%=index += 1 %></td>
           <td><%=message.autor%></td>
           <td><%=message.title%></td>
           <td><%=message.text%></td>
