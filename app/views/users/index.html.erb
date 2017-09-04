@@ -1,11 +1,16 @@
-
-
-<%if @errors %>
-  <%@errors.each do |e| %>
+<br>
+<div class="wrap">
+  <div class="content">
+    
+    <%if @errors %>
+    <%@errors.each do |e| %>
     <span class="errors"><%=e%></span>
     <br>
-  <%end%>
-<%end%>
+    <%end%>
+    <%end%>
+  </div>
+</div>
+<br>
 <br>
 <div class="wrap">
   <div class="content">
