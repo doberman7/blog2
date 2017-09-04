@@ -8,7 +8,28 @@
           <%@mtitle.class%>
           <%@mtext.class%>
           <%@mautor.class%>
-          <% if @tname%>
+
+          <% if @mautor.count > 0%>
+            <thead>
+              <tr>
+                  <th>Autor <%=@word%> conntiene los siguientes mensajes</th>
+              </tr>
+            </thead>
+            <tbody>
+                  <%@mautor.each do |me|%>
+                      <tr>
+                        <td><%=me.title%></td>
+                        <td><%=me.text%></td>
+                        <td><%=me.autor%></td>
+                      </tr>
+
+
+                  <% end %>
+          <% end%>
+
+
+
+          <% if @tname.count > 0%>
             <thead>
               <tr>
                   <th>Tag <%=@word%> conntiene los siguientes mensajes</th>
@@ -25,7 +46,10 @@
                       <%end%>
 
                   <% end %>
-              <% end%>
+          <% end%>
+
+
+
             </tbody>
           </table>
 
