@@ -4,27 +4,72 @@
       <h3 class="modal-title">Resultados para la busqueda<%=@word%></h3>
     </div>
       <div class="modal-body">
-        <table class="table">
-          <%@mtitle.class%>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <br>
+
+        <table class="table" id="modal-tabla">
+
+          <% if @mtitle.count > 0%>
+            <thead class="titulo">
+              <tr >
+                <th class="titulo">Título <%=@word%> está en los siguientes mensajes</th>
+              </tr>
+              <tr>
+                <th>Titulo</th>
+                <th>Texto</th>
+                <th>Autor</th>
+
+                <th>Tags</th>
+              </tr>
+            </thead>
+            <tbody class="titulo">
+                  <%@mtitle.each do |me|%>
+                      <tr>
+                        <td><%=me.title%></td>
+                        <td><%=me.text%></td>
+                        <td><%=me.autor%></td>
+
+                        <td>
+                            <%me.tags.each do |t|%>
+                            <ul>
+                              <li><%=t.name%></li>
+                            </ul>
+                            <%end%>
+                        </td>
+                      </tr>
+
+
+                  <% end %>
+          <% end%>
 
 
           <% if @mtext.count > 0%>
-            <thead>
+            <thead class="texto">
               <tr>
                   <th>Texto <%=@word%> está en los siguientes mensajes</th>
                   <tr>
                     <th>Titulo</th>
                     <th>Texto</th>
                     <th>Autor</th>
+
+                    <th>Tags</th>
                   </tr>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="texto">
                   <%@mtext.each do |me|%>
                       <tr>
                         <td><%=me.title%></td>
                         <td><%=me.text%></td>
                         <td><%=me.autor%></td>
+
+                        <td>
+                            <%me.tags.each do |t|%>
+                            <ul>
+                              <li><%=t.name%></li>
+                            </ul>
+                            <%end%>
+                        </td>
                       </tr>
 
 
@@ -34,22 +79,32 @@
 
 
           <% if @mautor.count > 0%>
-            <thead>
+            <thead class="autor">
               <tr>
                   <th>Autor <%=@word%> conntiene los siguientes mensajes</th>
                   <tr>
                     <th>Titulo</th>
                     <th>Texto</th>
                     <th>Autor</th>
+
+                    <th>Tags</th>
                   </tr>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="autor">
                   <%@mautor.each do |me|%>
                       <tr>
                         <td><%=me.title%></td>
                         <td><%=me.text%></td>
                         <td><%=me.autor%></td>
+
+                        <td>
+                            <%me.tags.each do |t|%>
+                            <ul>
+                              <li><%=t.name%></li>
+                            </ul>
+                            <%end%>
+                        </td>
                       </tr>
 
 
@@ -59,23 +114,32 @@
 
 
           <% if @tname.count > 0%>
-            <thead>
+            <thead class="tag">
               <tr>
                   <th>Tag <%=@word%> conntiene los siguientes mensajes</th>
                   <tr>
                     <th>Titulo</th>
                     <th>Texto</th>
                     <th>Autor</th>
+
+                    <th>Tags</th>
                   </tr>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="tag">
                   <%@tname.each do |tn|%>
                       <%tn.messages.each do |m|%>
                       <tr>
                         <td><%=m.title%></td>
                         <td><%=m.text%></td>
                         <td><%=m.autor%></td>
+                        <td>
+                            <%m.tags.each do |t|%>
+                            <ul>
+                              <li><%=t.name%></li>
+                            </ul>
+                            <%end%>
+                        </td>
                       </tr>
                       <%end%>
 
