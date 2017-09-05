@@ -41,7 +41,10 @@ class MessagesController < ApplicationController
   def search
     p "_" * 50
     p "messages_search"
-    p @word = params[:search][:word]
+    @word = params[:search][:word]
+    unless @word == ""
+      @word.downcase!
+    end
     @mtitle = Message.where(title: @word)
     @mtext = Message.where(text: @word)
     @mautor = Message.where(autor: @word)
