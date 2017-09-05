@@ -16,8 +16,10 @@ class MessagesController < ApplicationController
     autor = User.find(session[:user_id].to_i).name
     m = Message.create(title: title, text: text, autor: autor)
     if input_in_the_form != ""
+      input_in_the_form.downcase!
 			# separate the input throw a regex with comas, ignoring black spaces and put in a Ary
 			ary_whit_input = input_in_the_form.split (/\s*,\s*/)
+      ary_whit_input.uniq!
 			# itarate throw the ary
 			ary_whit_input.each do |tag_name|
 				# find if the tag already exists

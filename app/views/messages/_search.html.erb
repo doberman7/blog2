@@ -25,14 +25,14 @@
             <tbody class="titulo">
                   <%@mtitle.each do |me|%>
                       <tr>
-                        <td><%=me.title%></td>
-                        <td><%=me.text%></td>
-                        <td><%=me.autor%></td>
+                        <td><%=me.title.capitalize%></td>
+                        <td><%=me.text.capitalize%></td>
+                        <td><%=me.autor.capitalize%></td>
 
                         <td>
                             <%me.tags.each do |t|%>
                             <ul>
-                              <li><%=t.name%></li>
+                              <li><%=t.name.capitalize%></li>
                             </ul>
                             <%end%>
                         </td>
@@ -59,14 +59,14 @@
             <tbody class="texto">
                   <%@mtext.each do |me|%>
                       <tr>
-                        <td><%=me.title%></td>
-                        <td><%=me.text%></td>
-                        <td><%=me.autor%></td>
+                        <td><%=me.title.capitalize%></td>
+                        <td><%=me.text.capitalize%></td>
+                        <td><%=me.autor.capitalize%></td>
 
                         <td>
                             <%me.tags.each do |t|%>
                             <ul>
-                              <li><%=t.name%></li>
+                              <li><%=t.name.capitalize%></li>
                             </ul>
                             <%end%>
                         </td>
@@ -94,14 +94,14 @@
             <tbody class="autor">
                   <%@mautor.each do |me|%>
                       <tr>
-                        <td><%=me.title%></td>
-                        <td><%=me.text%></td>
-                        <td><%=me.autor%></td>
+                        <td><%=me.title.capitalize%></td>
+                        <td><%=me.text.capitalize%></td>
+                        <td><%=me.autor.capitalize%></td>
 
                         <td>
                             <%me.tags.each do |t|%>
                             <ul>
-                              <li><%=t.name%></li>
+                              <li><%=t.name.capitalize%></li>
                             </ul>
                             <%end%>
                         </td>
@@ -130,13 +130,13 @@
                   <%@tname.each do |tn|%>
                       <%tn.messages.each do |m|%>
                       <tr>
-                        <td><%=m.title%></td>
-                        <td><%=m.text%></td>
-                        <td><%=m.autor%></td>
+                        <td><%=m.title.capitalize%></td>
+                        <td><%=m.text.capitalize%></td>
+                        <td><%=m.autor.capitalize%></td>
                         <td>
                             <%m.tags.each do |t|%>
                             <ul>
-                              <li><%=t.name%></li>
+                              <li><%=t.name.capitalize%></li>
                             </ul>
                             <%end%>
                         </td>

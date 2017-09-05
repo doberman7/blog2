@@ -60,14 +60,14 @@
         <%end%>
         <tr class="<%=clase%>">
           <td ><%=index += 1 %></td>
-          <td><%=message.autor%></td>
-          <td><%=message.title%></td>
-          <td><%=message.text%></td>
+          <td><%=message.autor.capitalize%></td>
+          <td><%=message.title.capitalize%></td>
+          <td><%=message.text.capitalize%></td>
           <td><%=message.tags.count%></td>
           <td>
               <%message.tags.each do |t|%>
               <ul>
-                <li><%=t.name%></li>
+                <li><%=t.name.capitalize%></li>
               </ul>
               <%end%>
           </td>
