@@ -1,13 +1,22 @@
+require 'openpay'
 class MessagesController < ApplicationController
+  #merchant and private key
+  #An openpay resource factory instance is created out of the OpenpayApi
+  #it  points to the development environment  by default.
+
   def charges
     p "*" * 50
     p "charges"
+    p params
     p "_" * 50
   end
   def openpay
+    merchant_id='mywvupjjs9xdnryxtplq'
+    private_key='sk_92b25d3baec149e6b428d81abfe37006'
     p "_" * 50
-    p "openpay"
-
+    p openpay=OpenpayApi.new(merchant_id,private_key)
+    p customers=openpay.create(:customers)
+    # p openpay
     p "_" * 50
   end
 
