@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # boton hacer pago
+  post '/messages/charges', to: 'messages#charges', as: 'charges'
+  get "/messages/openpay", to: 'messages#openpay', as: 'messages_openpay'
+
   post '/messages/search', to: "messages#search", as: 'messages_search'
 
   post '/users/user_log', to: "users#user_log", as: 'user_log'

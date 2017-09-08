@@ -1,4 +1,16 @@
 class MessagesController < ApplicationController
+  def charges
+    p "*" * 50
+    p "charges"
+    p "_" * 50
+  end
+  def openpay
+    p "_" * 50
+    p "openpay"
+
+    p "_" * 50
+  end
+
   def index
     # p "-" * 50
     # p "index de mensajes"
@@ -7,7 +19,6 @@ class MessagesController < ApplicationController
   end
 
   def create
-    # p "_" * 50
     # p "create messages"
     # "message"=>{"title"=>"", "text"=>"", "tag"=>""},
     title = params[:message][:title]

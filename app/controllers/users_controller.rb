@@ -27,14 +27,14 @@ class UsersController < ApplicationController
   # al recargar la vista de mensajes
   def show
     # p "- " * 50
-    if @errors != nil
-      @messages= Message.all
-      render 'messages/index'
-      # p session[:user_id] = User.last
-      p "- " * 50
-    else
+    # if @errors != nil
+    #   @messages= Message.all
+    #   render 'messages/index'
+    #   # p session[:user_id] = User.last
+    #   p "- " * 50
+    # else
       render "users/index"
-    end
+    # end
   end
 
   def user_log
