@@ -1,3 +1,21 @@
 // $("#openpay-modal").html("<%= escape_javascript(render 'openpay') %>");
 // $("#openpay-modal").modal("show");
-alert("www");
+
+$(document).ready(function() {
+  var footermod = $("#openpay-m");
+  footermod.html("");
+  footermod.append("<h4>Codigo de Barras</h4>")
+  footermod.append('<img src="https://sandbox-api.openpay.mx/barcode/000020TR5L8MHUTJTIOHTT1C1G0090002?width=1&height=45&text=false" alt="barcode" />');
+
+  <%if @resp%>
+      footermod.append("<h4>Datos de pago en transacción</h4>")
+      <% @resp.each do |k,v|%>
+
+          footermod.append("<br>")
+            footermod.append("<%=k%>"+": "+"<%=v%>");
+
+      <% end %>
+  <% end %>
+
+
+});

@@ -14,8 +14,7 @@ class MessagesController < ApplicationController
        }
 
     response_hash=@charges.create(request_hash.to_hash)
-    # p response_hash
-    p params[:charges][:amount]
+    @resp = response_hash    
     p "*" * 50
   end
 
