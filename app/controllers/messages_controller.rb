@@ -4,17 +4,20 @@ class MessagesController < ApplicationController
   def charges
     p "*" * 50
     p "charges"
-
+    # Objeto de open open pay con llaves publica y privada
     @openpay=OpenpayApi.new("mzdtln0bmtms6o3kck8f","sk_e568c42a6c384b7ab02cd47d2e407cab")
+    #crear el recurso "cargos" con la fabrica de meotodos de open pay
     @charges=@openpay.create(:charges)
+    # se agregan su datos de llamada
     request_hash={
          "method" => "store",
          "amount" => params[:charges][:amount],
          "description" => "Cargo con tienda"
        }
-
+    # se obtiene la respuesta en un hash (también se puede hacer con objetos JSON)
     response_hash=@charges.create(request_hash.to_hash)
-    @resp = response_hash    
+    # agregar a una variable global para poder verlos en la modal
+    @resp = response_hash
     p "*" * 50
   end
 

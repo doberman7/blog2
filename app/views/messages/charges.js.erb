@@ -1,20 +1,20 @@
-// $("#openpay-modal").html("<%= escape_javascript(render 'openpay') %>");
-// $("#openpay-modal").modal("show");
-
 $(document).ready(function() {
+  // apuntar al div del foooter de la modal
   var footermod = $("#openpay-m");
+  // limpiar el div
   footermod.html("");
-  footermod.append("<h4>Codigo de Barras</h4>")
+  // anexar titulo y codigo de barras
+  footermod.append("<h3>Codigo de Barras</h3>")
   footermod.append('<img src="https://sandbox-api.openpay.mx/barcode/000020TR5L8MHUTJTIOHTT1C1G0090002?width=1&height=45&text=false" alt="barcode" />');
-
+  // si el servidor regresa una respuesta exitosa
   <%if @resp%>
       footermod.append("<h4>Datos de pago en transacción</h4>")
-      <% @resp.each do |k,v|%>
 
-          footermod.append("<br>")
-            footermod.append("<%=k%>"+": "+"<%=v%>");
 
-      <% end %>
+          // anexar llave y valor de hash retornado por Open Pay
+            footermod.append("<table class='table'><thead><tr><% @resp.each do |k,v|%><td><%=k%></td><td><%=v%></td></tr></thead><tbody><td><% end %></td></tbody></table>"
+            );
+
   <% end %>
 
 
