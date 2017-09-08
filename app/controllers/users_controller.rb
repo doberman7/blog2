@@ -28,12 +28,12 @@ class UsersController < ApplicationController
   def show
     # p "- " * 50
     # if @errors != nil
-    #   @messages= Message.all
-    #   render 'messages/index'
+       @messages= Message.all
+       render 'messages/index'
     #   # p session[:user_id] = User.last
     #   p "- " * 50
     # else
-      render "users/index"
+      # render "users/index"
     # end
   end
 

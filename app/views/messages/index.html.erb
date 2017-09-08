@@ -1,8 +1,8 @@
-<%= button_to "Openpay", messages_openpay_path, class: "btn btn-danger" ,:method => :get, remote: true %>
 
 <div class="wrap">
    <div class="content">
-   Ingresa tu mensaje
+  <h3>Ingresa tu mensaje</h3>
+
    <%= form_for :message, url: messages_path do |f| %>
    <p>
      <%= f.label :titulo %><br>
@@ -13,6 +13,7 @@
      <%= f.label :texto %><br>
      <%= f.text_area :text %>
    </p>
+   <h4>Ingresa Etiqueta</h4>
    <p>Puede ingresar más de un tag, separandolos con comas ","</p>
    <p>Ejemplo: tag1, tag2, etc</p>
    <p>
@@ -23,12 +24,12 @@
      <%= f.submit "salvar mensaje", class: "btn btn-success"%>
    </p>
    <% end %>
-   </div>
-</div>
+   <br>
+   <h3>Obtener linea de pago de Open Pay en tienda</h3>
+   <%= button_to "Obtner codigo", messages_openpay_path, class: "btn btn-danger" ,:method => :get, remote: true %>
 
-<div class="wrap">
-   <div class="content">
-   Busqueda por
+
+   <h3>Busqueda por</h3>
    <%= form_for :search, remote: true, url: messages_search_path do |f| %>
    <p>
      <%= f.label :palabra %><br>
@@ -38,8 +39,11 @@
      <%= f.submit "buscar", class: "btn btn-info"%>
    </p>
    <% end %>
+
+
    </div>
 </div>
+
 
 
 <table class="table">

@@ -2,8 +2,8 @@ require 'openpay'
 class MessagesController < ApplicationController
 
   def charges
-    p "*" * 50
-    p "charges"
+    # p "*" * 50
+    # p "charges"
     # Objeto de open open pay con llaves publica y privada
     @openpay=OpenpayApi.new("mzdtln0bmtms6o3kck8f","sk_e568c42a6c384b7ab02cd47d2e407cab")
     #crear el recurso "cargos" con la fabrica de meotodos de open pay
@@ -18,12 +18,12 @@ class MessagesController < ApplicationController
     response_hash=@charges.create(request_hash.to_hash)
     # agregar a una variable global para poder verlos en la modal
     @resp = response_hash
-    p "*" * 50
+    # p "*" * 50
   end
 
   def openpay
-    p "_" * 50
-    p "openpay"
+    # p "_" * 50
+    # p "openpay"
     # #merchant and private key
     # merchant_id='mywvupjjs9xdnryxtplq'
     # private_key='sk_92b25d3baec149e6b428d81abfe37006'
@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
     # openpay=OpenpayApi.new(merchant_id,private_key)
     # # The openpay factory instance is in charge to generate the required resources through a factory method (create)
     # p charges=openpay.create(:charges)
-    p "_" * 50
+    # p "_" * 50
   end
 
   def index
@@ -80,7 +80,21 @@ class MessagesController < ApplicationController
       @word.downcase!
     end
     @mtitle = Message.where(title: @word)
-    @mtext = Message.where(text: @word)
+    mensajes = Message.all.reverse
+    mensajes.map do|m|
+      p "+" * 50
+      text =  m.text.scan(/\w+/)
+      text.each do |t|
+        p t
+        # if t == @word
+        #   p text_found[m.id]=t
+        # end
+      end
+      p "+" * 50
+
+      p "+" * 50
+       @mtext = text
+    end
     @mautor = Message.where(autor: @word)
     @tname = Tag.where(name: @word)
 
