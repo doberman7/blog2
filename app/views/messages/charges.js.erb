@@ -11,8 +11,8 @@ $(document).ready(function() {
       footermod.append("<h4>Datos de pago en transacción</h4>")
 
 
-          // anexar llave y valor de hash retornado por Open Pay
-            footermod.append("<table class='table'><thead><tr><% @resp.each do |k,v|%><td><%=k%></td><td><%=v%></td></tr></thead><tbody><td><% end %></td></tbody></table>"
+          // anexar llave y valor de hash retornado por Open Pay, los datos se separan en una tabla donde todo se muetra en el head de la misma
+            footermod.append("<table class='table'><thead><% @resp.each do |k,v|%><tr><td><%=k%></td><td><%=v%></td></tr></thead><tbody><% end %></tbody></table>"
             );
 
   <% end %>
