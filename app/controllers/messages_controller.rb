@@ -14,12 +14,14 @@ class MessagesController < ApplicationController
        }
 
     response_hash=@charges.create(request_hash.to_hash)
-    p response_hash
+    # p response_hash
+    p params[:charges][:amount]
     p "*" * 50
   end
 
   def openpay
-    #p "_" * 50
+    p "_" * 50
+    p "openpay"
     # #merchant and private key
     # merchant_id='mywvupjjs9xdnryxtplq'
     # private_key='sk_92b25d3baec149e6b428d81abfe37006'
@@ -27,7 +29,7 @@ class MessagesController < ApplicationController
     # openpay=OpenpayApi.new(merchant_id,private_key)
     # # The openpay factory instance is in charge to generate the required resources through a factory method (create)
     # p charges=openpay.create(:charges)
-    #p "_" * 50
+    p "_" * 50
   end
 
   def index

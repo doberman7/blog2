@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # boton hacer pago
+  post '/messages/barcode', to: 'messages#barcode', as: 'barcode'
+  # hacer llamada a openpay
   post '/messages/charges', to: 'messages#charges', as: 'charges'
+  # metodo activado al dar click en boton rojo open pay
   get "/messages/openpay", to: 'messages#openpay', as: 'messages_openpay'
 
   post '/messages/search', to: "messages#search", as: 'messages_search'
