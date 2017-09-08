@@ -73,29 +73,34 @@ class MessagesController < ApplicationController
   end
 
   def search
-    p "_" * 50
-    p "messages_search"
+    # p "_" * 50
+    # p "messages_search"
+    # asignar el parametro del formulario
     @word = params[:search][:word]
-    unless @word == ""
-      @word.downcase!
-    end
+    # a menos que el parametro venga en blanco, convertir el string en minuscula
+    @word.downcase! unless @word == ""
+    # buscaar aquellos donde el títulos es igual a la palabra buscada
     @mtitle = Message.where(title: @word)
+    # invertir orden de mensajes, no, estaba buscando todos originalemente, sólo los del seed, asi que usamos está solución,
     mensajes = Message.all.reverse
+    # hacer un ary vacio
+    @mtext = []
+    # mapear los mensajes
     mensajes.map do|m|
-      p "+" * 50
+      # separar por palabra el text, en una array
       text =  m.text.scan(/\w+/)
+      # iterar en cada texto
       text.each do |t|
-        p t
-        # if t == @word
-        #   p text_found[m.id]=t
-        # end
+        #  si alguna palabra es igual a uno de los elementos del text, empujar id a la variable de instance
+         @mtext << Message.where(id: m.id) if t == @word
       end
-      p "+" * 50
-
-      p "+" * 50
-       @mtext = text
     end
+    # unifocar todos los arys en un solo nivel
+     @mtext.flatten!
+
+    # buscaar aquellos donde el autor es igual a la palabra buscada
     @mautor = Message.where(autor: @word)
+    # buscaar aquellos donde el nombre es igual a la palabra buscada
     @tname = Tag.where(name: @word)
 
     p "_" * 50
