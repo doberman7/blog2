@@ -7,7 +7,7 @@ source 'https://rubygems.org'
 #  To set your Ruby version add this line to your Gemfile:
 # remote:        ruby '2.3.4'
 
-gem 'jquery-ui-rails'
+gem 'openpay'
 gem 'rails',        '5.0.4'
 gem 'bcrypt',         '3.1.11'
 gem 'faker',          '1.7.3'
