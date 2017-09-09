@@ -1,6 +1,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.wrap-form {
+    float: left;
+    position: relative;
+    left: 50%;
+}
+
+.content-form {
+    float: left;
+    position: relative;
+    left: -50%;
+    text-align: center;
+    border: solid darkcyan;
+    background-color: tomato;
+}
+
+
 .par{
   background-color: mediumseagreen;
  }
@@ -55,13 +71,6 @@
     position: relative;
     left: -50%;
     text-align: center;
-    border: solid darkcyan;
-    background-color: tomato;
-    //
-    // h1 {
-    //   margin-bottom: 10px;
-    // }
-
 }
 
 textarea {
