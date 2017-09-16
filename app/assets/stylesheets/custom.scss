@@ -1,6 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+  background-color: purple;
+  background-image: image-url("cielo.JPG")
+  // background-image: none;
+  // background-image: url(cielo.JPG);
+  // background-image: inherit;
+
+}
+
 .wrap-form {
     float: left;
     position: relative;
