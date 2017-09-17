@@ -1,11 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+#rob{
+  color: tomato
+}
 
-.up{
+.arriba{
   // display: none;
   // position: relative;
-  color: red;
   height: 100px;
+  // background-color: darkgray
+  opacity: .7;
 }
 
 .registro {
