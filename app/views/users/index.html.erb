@@ -12,9 +12,6 @@
       <br>
       <div class="wrap">
         <div class="content ">
-          <div class="gif">
-            <%=image_tag("09.gif", alt: "no se ve imagen")%>
-          </div>
           <br>
           <%= button_to "Registrarse", new_user_path,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
           <br>
@@ -24,11 +21,14 @@
           <br>
           <br>
           <div
-          class="fb-like"
-          data-share="true"
-          data-width="450"
-          data-show-faces="true">
-        </div>
+            class="fb-like"
+            data-share="true"
+            data-width="450"
+            data-show-faces="true">
+          </div>          
+          <div class="gif">
+            <%=image_tag("09.gif", alt: "no se ve imagen")%>
+          </div>
       </div>
     </div>
 

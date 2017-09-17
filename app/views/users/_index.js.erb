@@ -1,7 +1,15 @@
 $(document).ready(function(){
-  $(document).ready( function() {
-        $('.gif').delay(2000).fadeOut();
-  });
+  var g = $('.gif');
+  var times = 0
+  // defuinicion funcion para que el gif aparesca y desparesca
+  function gif() {
+    $(g).delay(5000).fadeIn();
+    $(g).delay(2000).fadeOut();
+    times++;
+    if (times<=5) {
+      gif();
+    }
+  };
 
   window.fbAsyncInit = function() {
 
@@ -19,7 +27,7 @@ $(document).ready(function(){
         console.log(response);
       }
       else {
-        console.log("no logged");
+        // console.log("no logged");
         // FB.login();
       }
     });
@@ -38,5 +46,8 @@ $(document).ready(function(){
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+
+  // hechar a andar funcion
+  gif();
 
 });
