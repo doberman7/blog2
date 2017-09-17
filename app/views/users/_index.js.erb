@@ -1,13 +1,78 @@
 $(document).ready(function(){
   var g = $('.gif');
   var times = 0
-  // defuinicion funcion para que el gif aparesca y desparesca
+  var speed = 1500
+  var arr = $('.arriba');
+  var reg = $(".registro")
+  var opa = .25
+  // definicion funcion para que el gif aparesca y desparesca
   function gif() {
-    $(g).delay(5000).fadeIn();
-    $(g).delay(2000).fadeOut();
+    $(arr).animate({
+      height: "toggle",
+    }, 1000, function() {
+      // Animation complete.
+    });
+    $(reg).animate({
+      opacity: opa,
+      left: "-=100",
+      // height: "toggle",
+    }, speed, function() {
+      // Animation complete.
+    });
+    opa = opa + opa;
+    speed = speed - 100;
+    $(arr).animate({
+      height: "toggle",
+    }, speed, function() {
+      // Animation complete.
+    });
+    $(reg).animate({
+      opacity: opa,
+      left: "+=200",
+      // height: "toggle",
+    }, speed, function() {
+      // Animation complete.
+    });;
+    opa = opa + opa;
+    speed = speed - 100;
+    $(arr).animate({
+      height: "toggle",
+    }, speed, function() {
+      // Animation complete.
+    });
+    $(reg).animate({
+      opacity: opa,
+      left: "-=200",
+      // height: "toggle",
+    }, speed, function() {
+      // Animation complete.
+    })
+    opa = opa + opa;
+    speed = speed - 100;
+    $(arr).animate({
+      height: "toggle",
+    }, speed, function() {
+      // Animation complete.
+    });
+    $(reg).animate({
+      opacity: opa,
+      left: "+=100",
+      // height: "toggle",
+    }, speed, function() {
+      // Animation complete.
+    });;
+    $(arr).animate({
+      height: "toggle",
+    }, speed, function() {
+      // Animation complete.
+    });
+
+
     times++;
-    if (times<=5) {
+    if (times<=0) {
       gif();
+      // speed = speed - 753;
+      console.log(speed);
     }
   };
 

@@ -1,7 +1,6 @@
-
       <br>
       <div class="wrap">
-        <div class="content ">
+        <div class="content">
           <%if @errors %>
           <%@errors.each do |e| %>
           <span class="errors"><%=e%></span>
@@ -9,13 +8,20 @@
           <%end%>
         </div>
       </div>
-      <br>
       <div class="wrap">
         <div class="content ">
+          <div class="arriba">
+            <p style="color:red">ROBANDO DATOS</p>
+          </div>
           <br>
-          <%= button_to "Registrarse", new_user_path,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
-          <br>
-          <%= button_to "Logearse", log_path ,class: "btn btn-info",:method => :get ,remote: true %>
+          <div class="registro">
+            <%= button_to "Registrarse", new_user_path,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
+          </div>
+          <div class="registro">
+            <br>
+            <%= button_to "Logearse", log_path ,class: "btn btn-info",:method => :get ,remote: true %>
+            <br>
+          </div>
           <br>
           <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
           <br>
@@ -25,7 +31,7 @@
             data-share="true"
             data-width="450"
             data-show-faces="true">
-          </div>          
+          </div>
           <div class="gif">
             <%=image_tag("09.gif", alt: "no se ve imagen")%>
           </div>

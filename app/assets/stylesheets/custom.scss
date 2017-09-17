@@ -1,7 +1,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.up{
+  // display: none;
+  // position: relative;
+  color: red;
+  height: 100px;
+}
+
+.registro {
+  position: relative;
+  left: -10px;
+  opacity: 0.01,
+}
+
 .gif{
     display: none;
+    position: relative;
+    // width: 100px;
+    // height: 100px;
     padding: 3em;
 }
 
@@ -80,6 +97,12 @@ body{
     position: relative;
     left: -50%;
     text-align: center;
+    padding: 2.8875rem 1.75rem 1.3875rem 1.75rem ;
+    -moz-flex-basis: 60%;
+    -webkit-flex-basis: 60%;
+    -ms-flex-basis: 60%;
+    flex-basis: 60%;
+    margin-bottom: 1.5rem;
 }
 
 textarea {
