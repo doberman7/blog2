@@ -1,5 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.fb-like{
+  text-align: center;
+}
+
 #rob{
   color: tomato;
   font-family: "Lucida Console", Monaco, monospace;
@@ -29,7 +33,13 @@
 
 body{
   background-color: purple;
-  background-image: image-url("cielo.JPG")
+  background-image: image-url("cielo2.JPG");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  // background-size: contain;
+
 }
 
 .wrap-form {
