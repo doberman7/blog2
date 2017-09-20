@@ -4,7 +4,7 @@ $("ul.errors").html("")
 
 <% if @user.errors.any? %>
   <% @user.errors.full_messages.each do |e| %>
-    $(".errors").append("<p> <%= e %> <p/>")
+    $(".errors").append("<li> <%= e %> </li>")
   <% end %>
 <% else %>
   $("#user-modal").modal("hide")
