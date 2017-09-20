@@ -6,7 +6,7 @@ $(document).ready(function(){
   var reg = $(".registro")
   var opa = .25
   // definicion funcion para que el gif aparesca y desparesca
-  function gif() {
+  function moveButons() {
     $(arr).animate({
       height: "toggle",
     }, 1000, function() {
@@ -70,7 +70,7 @@ $(document).ready(function(){
 
     times++;
     if (times<=0) {
-      gif();
+      moveButons();
       // speed = speed - 753;
       console.log(speed);
     }
@@ -113,6 +113,6 @@ $(document).ready(function(){
   }(document, 'script', 'facebook-jssdk'));
 
   // hechar a andar funcion
-  gif();
+  moveButons();
 
 });
