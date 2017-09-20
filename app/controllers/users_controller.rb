@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @messages= Message.all
   end
   # meotodo al dar click en sign up
   def new
@@ -14,9 +15,9 @@ class UsersController < ApplicationController
   # password: params[:user][:password],
   # password_confirmation:[:user][:password_confirmation]
     @user = User.new(name: params[:user][:name], email: params[:user][:email], password: params[:user][:password], password_confirmation: params[:user][:password_confirmation] )
+
     if @user.save || @errors != nil
       session[:user_id] = @user.id
-      @messages= Message.all
       # render 'messages/index'
       p "-" * 50
       p "salvo"

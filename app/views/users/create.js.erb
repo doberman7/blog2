@@ -7,5 +7,8 @@ $("ul.errors").html("")
     $(".errors").append("<li> <%= e %> </li>")
   <% end %>
 <% else %>
+  // $("#messages-modal").html("<%= escape_javascript(render 'messages-modal') %>");
+
+  $("#user-modal").modal("messages-modal");
   $("#user-modal").modal("hide")
 <% end %>

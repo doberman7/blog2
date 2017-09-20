@@ -4,14 +4,8 @@
       <div class="wrap">
         <div class="content ">
           <div class="arriba">
-            <%if @errors %>
-              <%@errors.each do |e| %>
-                <span class="errors"><%=e%></span>
-              <%end%>
-            <%else @errors %>
               <br>
               <p id="rob"> ROBANDO DATOS :)</p>
-            <%end%>
             <br>
           </div>
 
@@ -40,12 +34,12 @@
           </div>
       </div>
     </div>
-    <div class="">
-      
+    <div id="messages-modal">
+      <%= render 'messages/index'%>
     </div>
 
     <div id="user-modal" class="modal fade"></div>
     <div id="log-modal" class="modal fade"></div>
     <script>
-    <%= render :partial => 'users/index.js'%>
+      <%= render :partial => 'users/index.js'%>
     </script>

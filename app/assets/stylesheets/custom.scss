@@ -1,5 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#messages-modal{
+    display: none;
+}
+
 .fb-like{
   text-align: center;
 }
