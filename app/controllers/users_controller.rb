@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save || @errors != nil
       session[:user_id] = @user.id
+      @messages= Message.all
       # render 'messages/index'
       p "-" * 50
       p "salvo"
