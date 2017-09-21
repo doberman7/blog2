@@ -11,23 +11,26 @@
 
 
           <br>
-          <div class="registro">
-            <%= button_to "Registrarse", new_user_path,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
-          </div>
-          <div class="registro">
+          <div id="access">
+            <div class="registro">
+              <%= button_to "Registrarse", new_user_path,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
+            </div>
+            <div class="registro">
+              <br>
+              <%= button_to "Logearse", log_path ,class: "btn btn-info",:method => :get ,remote: true %>
+              <br>
+            </div>
             <br>
-            <%= button_to "Logearse", log_path ,class: "btn btn-info",:method => :get ,remote: true %>
+            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
             <br>
-          </div>
-          <br>
-          <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
-          <br>
-          <br>
-          <div
+            <br>
+            <div
             class="fb-like"
             data-share="true"
             data-width="250"
             data-show-faces="true">
+          </div>
+
           </div>
           <div id="messages">
             <%= render 'messages/index'%>
