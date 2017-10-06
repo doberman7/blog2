@@ -1,18 +1,15 @@
 // limpiar lista de errores
-$("ul.errors").html("")
-// si hay errores de validacion
-<% if @user.errors.any? %>
-  // cada uno de los errores
-  <% @user.errors.full_messages.each do |e| %>
-  // anexarlos a la lista en la vista parcial
-    $(".errors").append("<li> <%= e %> </li>")
-  <% end %>
+$("ul.errors").html("");
+// si no hay usuario con esos datos
+<% if @user == nil %>
+  //anexar en la vista modal el msj:
+  $(".errors").append("<p> No usuario con esos datos </p>");
   // si no hay errores
 <% else %>
   // mostrar mensajes
   $("#messages").show();
   // ocultar la vista modal de registro
-  $("#user-modal").modal("hide")
+  $("#log-modal").modal("hide");
   // ocultar botones de login y signup y fb
   $("#access").hide();
 <% end %>
