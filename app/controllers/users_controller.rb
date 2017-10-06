@@ -44,18 +44,18 @@ class UsersController < ApplicationController
   end
 
   def user_log
-    p "+" * 50
-    p "log"
-    u = User.where(email: params[:user][:email], password: params[:user][:password] ).count
+    # p "+" * 50
+    # p "log"
+    # encontrar primer usuario que cumple email y password
+    @user = User.where(email: params[:user][:email], password: params[:user][:password] ).first
     @messages= Message.all
-    if u != 0
-      p "+" * 50
-      p "encontro el user"
+    if @user != nil
+      # p "+" * 50
       session[:user_id] = User.where(email: params[:user][:email], password: params[:user][:password] ).first.id
       # render 'messages/index'
     else
-      @errors = ["Nada, no estás en la BD"]
-      render "users/index"
+      # @errors = ["Nada, no estás en la BD"]
+      # render "users/index"
     end
   end
 
