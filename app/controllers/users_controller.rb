@@ -49,6 +49,8 @@ class UsersController < ApplicationController
     u = User.where(email: params[:user][:email], password: params[:user][:password] ).count
     @messages= Message.all
     if u != 0
+      p "+" * 50
+      p "encontro el user"
       session[:user_id] = User.where(email: params[:user][:email], password: params[:user][:password] ).first.id
       # render 'messages/index'
     else
