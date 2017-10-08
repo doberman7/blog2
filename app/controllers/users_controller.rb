@@ -53,6 +53,9 @@ class UsersController < ApplicationController
       # p "+" * 50
       session[:user_id] = User.where(email: params[:user][:email], password: params[:user][:password] ).first.id
       # render 'messages/index'
+      p "<" * 50
+
+      # p current_user
     else
       # @errors = ["Nada, no estás en la BD"]
       # render "users/index"
