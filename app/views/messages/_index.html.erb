@@ -1,29 +1,6 @@
-
+<%= button_to "dejar mensaje", messages_new_path ,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
 <div class="wrap-form">
    <div class="content-form">
-  <h3>Ingresa tu mensaje</h3>
-
-   <%= form_for :message, url: messages_path do |f| %>
-   <p>
-     <%= f.label :titulo %><br>
-     <%= f.text_field :title %>
-   </p>
-
-   <p>
-     <%= f.label :texto %><br>
-     <%= f.text_area :text %>
-   </p>
-   <h4>Ingresa Etiqueta</h4>
-   <p>Puede ingresar más de un tag, separandolos con comas ","</p>
-   <p>Ejemplo: tag1, tag2, etc</p>
-   <p>
-     <%= f.label :tag %><br>
-     <%= f.text_field :tag %>
-   </p>
-   <p>
-     <%= f.submit "salvar mensaje", class: "btn btn-success"%>
-   </p>
-   <% end %>
    <br>
    <h3>Obtener linea de pago de Open Pay en tienda</h3>
    <%= button_to "Obtener codigo", messages_openpay_path, class: "btn btn-danger" ,:method => :get, remote: true %>

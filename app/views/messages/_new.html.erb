@@ -1,0 +1,35 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      Ingresa tu mensaje
+    </div>
+      <div class="modal-body">
+           <%= form_for :message, url: messages_path do |f| %>
+           <p>
+             <%= f.label :titulo %><br>
+             <%= f.text_field :title %>
+           </p>
+
+           <p>
+             <%= f.label :texto %><br>
+             <%= f.text_area :text %>
+           </p>
+           <h4>Ingresa Etiqueta</h4>
+           <p>Puede ingresar más de un tag, separandolos con comas ","</p>
+           <p>Ejemplo: tag1, tag2, etc</p>
+           <p>
+             <%= f.label :tag %><br>
+             <%= f.text_field :tag %>
+           </p>
+           <p>
+             <%= f.submit "salvar mensaje", class: "btn btn-success"%>
+           </p>
+           <% end %>
+           
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <br>
+      </div>
+      <div class="modal-footer">
+    </div>
+  </div>
+</div>

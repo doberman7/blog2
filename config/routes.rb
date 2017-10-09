@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  #boton dejar mensaje
+  get "/messages/new", to: 'messages#new', as: 'messages_new'
   # boton hacer pago
   post '/messages/barcode', to: 'messages#barcode', as: 'barcode'
   # hacer llamada a openpay

@@ -1,9 +1,11 @@
 require 'openpay'
 class MessagesController < ApplicationController
+  def new
+    p "*" * 50
+    p "new mesage"
+  end
 
   def charges
-    # p "*" * 50
-    # p "charges"
     # Objeto de open open pay con llaves publica y privada
     @openpay=OpenpayApi.new("mzdtln0bmtms6o3kck8f","sk_e568c42a6c384b7ab02cd47d2e407cab")
     #crear el recurso "cargos" con la fabrica de meotodos de open pay
@@ -69,7 +71,7 @@ class MessagesController < ApplicationController
 			end
     end
     @messages= Message.all
-    render 'messages/index'
+
   end
 
   def search
