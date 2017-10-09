@@ -43,8 +43,8 @@ class MessagesController < ApplicationController
     @messages = Message.all
   end
 
+  # este method responde a la ruta "/messages"
   def create
-    # p "create messages"
     # "message"=>{"title"=>"", "text"=>"", "tag"=>""},
     title = params[:message][:title]
     text = params[:message][:text]

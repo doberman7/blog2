@@ -4,7 +4,7 @@
       Ingresa tu mensaje
     </div>
       <div class="modal-body">
-           <%= form_for :message, url: messages_path do |f| %>
+           <%= form_for :message, url: messages_path, remote: true do |f| %>
            <p>
              <%= f.label :titulo %><br>
              <%= f.text_field :title %>
@@ -25,7 +25,7 @@
              <%= f.submit "salvar mensaje", class: "btn btn-success"%>
            </p>
            <% end %>
-           
+
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
         <br>
       </div>
