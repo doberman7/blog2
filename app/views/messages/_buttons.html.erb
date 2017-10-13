@@ -1,0 +1,30 @@
+<%= button_to "dejar mensaje", messages_new_path ,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
+<br>
+<div class="wrap-form">
+   <div class="content-form">
+   <br>
+   <h3>Obtener linea de pago de Open Pay en tienda</h3>
+   <%= button_to "Obtener codigo", messages_openpay_path, class: "btn btn-danger" ,:method => :get, remote: true %>
+
+
+   <h3>Busqueda por</h3>
+   <%= form_for :search, remote: true, url: messages_search_path do |f| %>
+   <p>
+     <%= f.label :palabra %><br>
+     <%= f.text_field :word %>
+   </p>
+   <p>
+     <%= f.submit "buscar", class: "btn btn-info"%>
+   </p>
+   <% end %>
+
+
+   </div>
+</div>
+
+
+
+
+<div id="search-modal" class="modal fade"></div>
+<div id="openpay-modal" class="modal fade"></div>
+<div id="master-modal" class="modal fade"></div>

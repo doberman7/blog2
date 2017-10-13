@@ -20,15 +20,18 @@
             <br>
             <br>
             <div
-            class="fb-like"
-            data-share="true"
-            data-width="250"
-            data-show-faces="true">
-          </div>
+              class="fb-like"
+              data-share="true"
+              data-width="250"
+              data-show-faces="true">
+            </div>
 
           </div>
+          <div id="buttons">
+              <%= render 'messages/buttons'%>
+          </div>
           <div id="messages">
-            <%= render 'messages/index'%>
+              <%= render 'messages/messages'%>
           </div>
           <div class="gif">
             <%=image_tag("09.gif", alt: "no se ve imagen")%>
