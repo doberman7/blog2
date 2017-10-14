@@ -3,19 +3,10 @@
 <br>
 <%= button_to "Donar dinero a Ivan", messages_openpay_path, class: "btn btn-danger" ,:method => :get, remote: true %>
 <br>
-<!-- <div class="wrap">
-   <div class="content" > -->
-     <div >
-       <%= form_for :search, class: "form-search" ,remote: true, url: messages_search_path do |f| %>
 
 
+       <%= form_for :search, :html => {class: "form-search" } , remote: true, url: messages_search_path do |f| %>
        <i class="fa fa-search"></i>
-         <%= f.text_field :word , placeholder: "estoy buscando..." %>
-
-
-       <%= f.submit "buscar", class: "btn btn-info"%>
+         <%= f.text_field :word , placeholder: "Estoy buscando..." %>
+       <%= f.submit "Buscar", class: "button"%>
        <% end %>
-
-     </div>
-   <!-- </div>
-</div> -->
