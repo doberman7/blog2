@@ -1,6 +1,4 @@
-Rails.application.routes.draw do
-  # boton buscar mensaje
-  get "messages/search", to: 'messages#search', as: 'mesagges_search'
+Rails.application.routes.draw do  
   #boton dejar mensaje
   get "/messages/new", to: 'messages#new', as: 'messages_new'
   # boton hacer pago

@@ -1,18 +1,21 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <%= button_to "dejar mensaje", messages_new_path ,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
 <br>
 <%= button_to "Donar dinero a Ivan", messages_openpay_path, class: "btn btn-danger" ,:method => :get, remote: true %>
 <br>
-<div class="wrap-form">
-   <div class="content-form">
-   <h3>Busqueda por</h3>
-   <%= form_for :search, remote: true, url: messages_search_path do |f| %>
-   <p>
-     <%= f.label :palabra %><br>
-     <%= f.text_field :word %>
-   </p>
-   <p>
-     <%= f.submit "buscar", class: "btn btn-info"%>
-   </p>
-   <% end %>
-   </div>
-</div>
+<!-- <div class="wrap">
+   <div class="content" > -->
+     <div >
+       <%= form_for :search, class: "form-search" ,remote: true, url: messages_search_path do |f| %>
+
+
+       <i class="fa fa-search"></i>
+         <%= f.text_field :word , placeholder: "estoy buscando..." %>
+
+
+       <%= f.submit "buscar", class: "btn btn-info"%>
+       <% end %>
+
+     </div>
+   <!-- </div>
+</div> -->
