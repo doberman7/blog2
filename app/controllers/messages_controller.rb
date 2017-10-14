@@ -73,7 +73,7 @@ class MessagesController < ApplicationController
     @messages= Message.all
 
   end
-
+  
   def search
     # p "_" * 50
     # p "messages_search"

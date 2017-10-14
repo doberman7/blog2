@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # boton buscar mensaje
+  get "messages/search", to: 'messages#search', as: 'mesagges_search'
   #boton dejar mensaje
   get "/messages/new", to: 'messages#new', as: 'messages_new'
   # boton hacer pago
@@ -49,6 +51,8 @@ Rails.application.routes.draw do
       #        PATCH  /tags/:id(.:format)          tags#update
       #        PUT    /tags/:id(.:format)          tags#update
       #        DELETE /tags/:id(.:format)          tags#destroy
+
+
       # messages GET    /messages(.:format)          messages#index
       #        POST   /messages(.:format)          messages#create
       # new_message GET    /messages/new(.:format)      messages#new
