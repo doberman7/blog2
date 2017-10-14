@@ -1,3 +1,5 @@
+<div class="wrap">
+  <div class="content ">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <%= button_to "dejar mensaje", messages_new_path ,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
 <br>
@@ -5,8 +7,11 @@
 <br>
 
 
+
        <%= form_for :search, :html => {class: "form-search" } , remote: true, url: messages_search_path do |f| %>
        <i class="fa fa-search"></i>
          <%= f.text_field :word , placeholder: "Estoy buscando..." %>
        <%= f.submit "Buscar", class: "button"%>
        <% end %>
+  </div>
+</div>
