@@ -53,8 +53,7 @@ class UsersController < ApplicationController
   end
 
   def user_log
-    p "+" * 50
-    p "log"
+
     if @user.nil?
       # encontrar primer usuario que cumple email y password
       @user = User.where(email: params[:user][:email], password: params[:user][:password] ).first
@@ -63,7 +62,10 @@ class UsersController < ApplicationController
         @messages= Message.all
       end
     end
+  end
 
-    p request.xhr?
+  def destroy
+    log_out
+    redirect_to root_url
   end
 end

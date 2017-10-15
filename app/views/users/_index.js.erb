@@ -116,7 +116,7 @@ $(document).ready(function(){
   // moveButons();
 
 
-  // checar user
+  // si hay un user loged
   if ("<%=session[:user_id]%>") {
     // mostrar mensajes y botones
     $("#messages").show();
@@ -126,7 +126,5 @@ $(document).ready(function(){
     $("#log-modal").modal("hide");
     // ocultar botones de login y signup y fb
     $("#access").hide();
-    alert("entro");
   }
-
 });

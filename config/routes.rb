@@ -1,4 +1,7 @@
-Rails.application.routes.draw do  
+Rails.application.routes.draw do
+  # deslogearse de la pagina
+  delete '/logout', to: 'users#destroy', as: "logout"
+
   #boton dejar mensaje
   get "/messages/new", to: 'messages#new', as: 'messages_new'
   # boton hacer pago
