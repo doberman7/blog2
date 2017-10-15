@@ -53,7 +53,6 @@ class UsersController < ApplicationController
   end
 
   def user_log
-
     if @user.nil?
       # encontrar primer usuario que cumple email y password
       @user = User.where(email: params[:user][:email], password: params[:user][:password] ).first

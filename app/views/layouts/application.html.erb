@@ -11,13 +11,13 @@
     <!-- esto permite traer la imagen de la lupa en el filtro -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
   </head>
-  <% if @user %>
-      <header>
+
+  <header>
         <div id="salir">
           <%= link_to "Log out", logout_path, method: :delete %>
         </div>
-      </header>
-  <% end %>
+  </header>
+
   <body>
     <%= yield %>
   </body>
