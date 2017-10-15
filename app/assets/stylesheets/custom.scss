@@ -1,6 +1,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+#salir{
+  // height: 10em;
+  // width: 5em;
+  margin: 2em 5em;
+  // background: url(chango.svg) no-repeat top left;
+  // background-color: rgb(32, 124, 124);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  // background-attachment: fixed;
+  // background-size: cover;
+  float: right;
+  a {
+
+    color: greenyellow;
+  }
+}
+
 .form-search{
     margin: 0 auto;
     text-align: left;
@@ -93,13 +111,18 @@
 }
 
 body{
-  background-color: purple;
-  background-image: image-url("cielo2.JPG");
+  // background-image: image-url("cielo2.JPG");
+
+  // para usar en CHANGO
+  background: url(chango.svg);
+  background-color: rgb(32, 124, 124);
+
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  background-size: cover;
-  // background-size: contain;
+  // para usar el CHANGO como fondo de pantalla, comentar las siguientes dos lìneas
+  // background-size: cover;
+  // background-size: contain; //para usar el CIELO como fondo usar este
 
 }
 
@@ -185,15 +208,3 @@ textarea {
   resize: vertical;
   resize: horizontal;
 }
-
-
-// input, textarea, select, .uneditable-input {
-//   border: 1px solid #bbb;
-//   // width: 100%;
-//   margin-bottom: 15px;
-//   @include box_sizing;
-// }
-//
-// input {
-//   height: auto !important;
-// }

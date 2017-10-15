@@ -8,8 +8,16 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- hacer que la ventana sea responsiva al dispositivos moviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!-- esto permite traer la imagen de la lupa en el filtro -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
   </head>
-
+  <% if @user %>
+      <header>
+        <div id="salir">
+          <%= link_to "Log out", logout_path, method: :delete %>
+        </div>
+      </header>
+  <% end %>
   <body>
     <%= yield %>
   </body>
