@@ -113,6 +113,20 @@ $(document).ready(function(){
   }(document, 'script', 'facebook-jssdk'));
   // hechar a andar funcion
   // DESCOMENTAR para hacer funcionar la animacion
-  moveButons();
+  // moveButons();
+
+
+  // checar user
+  if ("<%=session[:user_id]%>") {
+    // mostrar mensajes y botones
+    $("#messages").show();
+    $("#buttons").show();
+
+    // ocultar la vista modal de registro
+    $("#log-modal").modal("hide");
+    // ocultar botones de login y signup y fb
+    $("#access").hide();
+    alert("entro");
+  }
 
 });

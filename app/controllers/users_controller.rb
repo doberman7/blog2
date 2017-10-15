@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   def index
     @messages= Message.all
+    # si en las cokies no hay un user id
+    if session[:user_id] != nil
+      # si el id de usuario es un numero
+      if session[:user_id].integer?
+        # es posible que hya que CAMBIAR esta parte, ignoramos si otras paginas usan user id
+        @user = User.find(session[:user_id].to_i)
+        user_log
+      end
+    end
   end
   # meotodo al dar click en sign up
   def new
@@ -44,23 +53,17 @@ class UsersController < ApplicationController
   end
 
   def user_log
-    # p "+" * 50
-    # p "log"
-    # encontrar primer usuario que cumple email y password
-    @user = User.where(email: params[:user][:email], password: params[:user][:password] ).first
-    @messages= Message.all
-    if @user != nil
-      # p "+" * 50
-      session[:user_id] = User.where(email: params[:user][:email], password: params[:user][:password] ).first.id
-      # render 'messages/index'
-      p "<" * 50
-
-      # p current_user
-    else
-      # @errors = ["Nada, no estás en la BD"]
-      # render "users/index"
+    p "+" * 50
+    p "log"
+    if @user.nil?
+      # encontrar primer usuario que cumple email y password
+      @user = User.where(email: params[:user][:email], password: params[:user][:password] ).first
+      if @user != nil
+        session[:user_id] = User.where(email: params[:user][:email], password: params[:user][:password] ).first.id
+        @messages= Message.all
+      end
     end
+
+    p request.xhr?
   end
-
-
 end
