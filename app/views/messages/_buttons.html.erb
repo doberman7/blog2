@@ -6,8 +6,6 @@
 <%= button_to "Donar dinero a Ivan", messages_openpay_path, class: "btn btn-danger" ,:method => :get, remote: true %>
 <br>
 
-
-
        <%= form_for :search, :html => {class: "form-search" } , remote: true, url: messages_search_path do |f| %>
        <i class="fa fa-search"></i>
          <%= f.text_field :word , placeholder: "Estoy buscando..." %>
