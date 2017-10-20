@@ -112,17 +112,18 @@
 }
 
 body{
-  background-image: image-url("chango.svg");
+  background-image: asset-url("chango.svg");
+  // background-image: image-url("chango.svg");
   // para usar en CHANGO
-  background: url(chango.svg);
+  // background: url(chango.svg);
   background-color: rgb(32, 124, 124);
 
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   // para usar el CHANGO como fondo de pantalla, comentar las siguientes dos lìneas
-  background-size: cover;
-  background-size: contain; //para usar el CIELO como fondo usar este
+  // background-size: cover;
+  // background-size: contain; //para usar el CIELO como fondo usar este
 
 }
 

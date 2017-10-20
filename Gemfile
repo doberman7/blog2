@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 # end
 #  To set your Ruby version add this line to your Gemfile:
 # remote:        ruby '2.3.4'
+gem 'rails_12factor', group: :production
 
 gem 'openpay'
 gem 'rails',        '5.0.4'
