@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # ruta para
+  # get '/users/log', to: "users#log", as: 'log'
+
   # deslogearse de la pagina
   delete '/logout', to: 'users#destroy', as: "logout"
 

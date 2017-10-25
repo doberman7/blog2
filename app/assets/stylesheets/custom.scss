@@ -1,6 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// en el partial de mensajes ocultamos el botom de prueba para openPay
+#btn-openPay{
+  display: none;
+}
+
 #salir{
   display: none;
   // height: 10em;
@@ -15,16 +20,16 @@
   // background-size: cover;
   float: right;
   a {
-
     color: greenyellow;
   }
 }
-
+// estilo para el formulario para buscar mensajes
 .form-search{
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
     font: bold 13px sans-serif;
-    max-width: 500px;
+    // medida del contenedor para el forulario, más chico se divide en dos renglones, "estoy buscando" y "buscar"
+    max-width: 460px;
     position: relative;
 
     input{
@@ -113,11 +118,12 @@
 
 
 body{
-  // background-image: asset-url("chango.svg");
-  background-image: image-url("puente1.png");
+  // puente2.png es mas delgado
+  background-image: image-url("puente2.png");
   // para usar en CHANGO
+  // background-image: asset-url("chango.svg");
   // background: url(chango.svg);
-  background-color: rgb(32, 124, 124);
+  background-color: rgb(22, 29, 32);
 
   background-repeat: no-repeat;
   background-position: center;
@@ -127,22 +133,6 @@ body{
   // background-size: contain; //para usar el CIELO como fondo usar este
 
 }
-
-// .wrap-form {
-//     float: left;
-//     position: relative;
-//     left: 50%;
-// }
-
-// .content-form {
-//     float: left;
-//     position: relative;
-//     left: -50%;
-//     text-align: center;
-//     border: solid darkcyan;
-//     background-color: tomato;
-// }
-
 
 .par{
   background-color: mediumseagreen;

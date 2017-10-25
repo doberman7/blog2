@@ -2,7 +2,12 @@
   <div class="content ">
 <%= button_to "dejar mensaje", messages_new_path ,class: "btn btn-success",id: "btn_user_new",:method => :get ,remote: true %>
 <br>
-<%= button_to "Donar dinero a Ivan", messages_openpay_path, class: "btn btn-info" ,:method => :get, remote: true %>
+
+<%= button_to "Jugar", messages_openpay_path , class: "btn btn-warning" ,:method => :get, remote: true %>
+
+<%= button_to "Donar dinero a Ivan", messages_openpay_path,id: "btn-openPay", class: "btn btn-info" ,:method => :get, remote: true %>
+
+
 <br>
 
        <%= form_for :search, :html => {class: "form-search" } , remote: true, url: messages_search_path do |f| %>
