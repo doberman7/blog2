@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  # ruta para
+  # ruta para jugar, botón amarillo
   get '/users/play', to: "users#play", as: 'play'
-  # post '/users/user_log', to: "users#user_log", as: 'user_log'
   # deslogearse de la pagina
   delete '/logout', to: 'users#destroy', as: "logout"
 
