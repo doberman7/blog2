@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # ruta para
-  # get '/users/log', to: "users#log", as: 'log'
-
+  get '/users/play', to: "users#play", as: 'play'
+  # post '/users/user_log', to: "users#user_log", as: 'user_log'
   # deslogearse de la pagina
   delete '/logout', to: 'users#destroy', as: "logout"
 

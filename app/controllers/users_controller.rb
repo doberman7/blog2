@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  def play
+    p "-" * 50 
+    p "play"
+  end
+
   def index
     @messages= Message.all
     # si en las cokies no hay un user id
