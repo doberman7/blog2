@@ -18,8 +18,18 @@ var dy = -2;
 // Para facilitar los cálculos, definamos una variable llamada ballRadius que mantendrá el radio del círculo dibujado y se utilizará para los cálculos. Añade esto a tu código, en algún lugar por debajo de las declaraciones de variables existente
 var ballRadius = 10;
 
+// funcion para cambiar color de pelota aleatoriamente al tocar border: http://stackoverflow.com/questions/1484506/ddg#1484514
+function change_color(){
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  ctx.fillStyle = color;
+}
 
-// código para dibujar
+
+// código para dibujar pelota
 function drawBall() {
   // el trayecto no es coloreado
     ctx.beginPath();
@@ -28,17 +38,20 @@ function drawBall() {
     ctx.closePath();
 }
 
+// dibujar lienzo
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
 
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
-        ctx.fillStyle = "#222377";
+        // cambiar color
+        change_color();
     }
     if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
         dy = -dy;
-        ctx.fillStyle = "#1faa25";
+        // cambiar color
+        change_color();
     }
 
     x += dx;
