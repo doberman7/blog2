@@ -21,9 +21,9 @@ var ballRadius = 10;
 
 // código para dibujar
 function drawBall() {
+  // el trayecto no es coloreado
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI*2);
-    ctx.fillStyle = "#7e23a3";
     ctx.fill();
     ctx.closePath();
 }
@@ -34,11 +34,11 @@ function draw() {
 
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
-
+        ctx.fillStyle = "#222377";
     }
     if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
         dy = -dy;
-        
+        ctx.fillStyle = "#1faa25";
     }
 
     x += dx;
