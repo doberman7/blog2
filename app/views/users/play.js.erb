@@ -1,108 +1,116 @@
 $("#master-modal").html("<%= escape_javascript(render 'play') %>");
 $("#master-modal").modal("show");
+
 //-------VARIABLES
-// variable con lienzo
-var canvas = document.getElementById("myCanvas");
-// The getContext() method returns an object that provides methods and properties for drawing on the canvas. the getContext("2d") object, which can be used to draw text, lines, boxes, circles, and more - on the canvas.
-//ctx: It is a shorthand for the word "context"
-var ctx = canvas.getContext("2d");
+function game(){
+  var jugar = 0
+  // variable con lienzo
+  var canvas = document.getElementById("myCanvas");
+  // The getContext() method returns an object that provides methods and properties for drawing on the canvas. the getContext("2d") object, which can be used to draw text, lines, boxes, circles, and more - on the canvas.
+  //ctx: It is a shorthand for the word "context"
+  var ctx = canvas.getContext("2d");
 
-//definiremos un punto de inicio en la parte central inferior del lienzo en las variables llamadas x e y, a continuación, las utilizaremos para definir la posición en la que se dibuja el círculo.
-var x = canvas.width/2;
-var y = canvas.height-30;
-// añadir un valor pequeño a "x" e "y" después de que cada fotograma se haya dibujado para que parezca que la pelota se está moviendo. Definamos estos valores pequeños como dx y dy, y establezcamos sus valores en 2 y -2 respectivamente
-var dx = 2;
-var dy = -2;
+  //definiremos un punto de inicio en la parte central inferior del lienzo en las variables llamadas x e y, a continuación, las utilizaremos para definir la posición en la que se dibuja el círculo.
+  var x = canvas.width/2;
+  var y = canvas.height-30;
+  // añadir un valor pequeño a "x" e "y" después de que cada fotograma se haya dibujado para que parezca que la pelota se está moviendo. Definamos estos valores pequeños como dx y dy, y establezcamos sus valores en 2 y -2 respectivamente
+  var dx = 2;
+  var dy = -2;
 
-// Para facilitar los cálculos, definamos una variable llamada ballRadius que mantendrá el radio del círculo dibujado y se utilizará para los cálculos. Añade esto a tu código, en algún lugar por debajo de las declaraciones de variables existente
-var ballRadius = 10;
+  // Para facilitar los cálculos, definamos una variable llamada ballRadius que mantendrá el radio del círculo dibujado y se utilizará para los cálculos. Añade esto a tu código, en algún lugar por debajo de las declaraciones de variables existente
+  var ballRadius = 10;
 
-//  paleta para golpear la bola, paddleHeight servirá para definir la altura de la paleta, paddleWidth la anchura y paddleX la posición en el eje X en la que empieza a dibujarse.
-var paddleHeight = 10;
-var paddleWidth = 75;
-var paddleX = (canvas.width-paddleWidth)/2;
-//  variables que nos dirán si se ha pulsado un botón., Las dos las inicializamos con el valor false porque al principio no están pulsados los botones.
-var rightPressed = false;
-var leftPressed = false;
+  //  paleta para golpear la bola, paddleHeight servirá para definir la altura de la paleta, paddleWidth la anchura y paddleX la posición en el eje X en la que empieza a dibujarse.
+  var paddleHeight = 10;
+  var paddleWidth = 75;
+  var paddleX = (canvas.width-paddleWidth)/2;
+  //  variables que nos dirán si se ha pulsado un botón., Las dos las inicializamos con el valor false porque al principio no están pulsados los botones.
+  var rightPressed = false;
+  var leftPressed = false;
 
 
-// ------------------------------FUNCIONES
-// función que dibujará la paleta en la pantalla
-function drawPaddle() {
-    ctx.beginPath();
-    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fill();
-    ctx.closePath();
-}
-// funcion para cambiar color de pelota aleatoriamente al tocar border: http://stackoverflow.com/questions/1484506/ddg#1484514
-function change_color(){
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+  // ------------------------------FUNCIONES
+  // función que dibujará la paleta en la pantalla
+  function drawPaddle() {
+      ctx.beginPath();
+      ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+      ctx.fill();
+      ctx.closePath();
   }
-  ctx.fillStyle = color;
-}
+  // funcion para cambiar color de pelota y paleta aleatoriamente al tocar border: http://stackoverflow.com/questions/1484506/ddg#1484514
+  function change_color(){
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    ctx.fillStyle = color;
+  }
 
 
-// código para dibujar pelota
-function drawBall() {
-  // el trayecto no es coloreado
-    ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fill();
-    ctx.closePath();
-}
+  // código para dibujar pelota
+  function drawBall() {
+    // el trayecto no es coloreado
+      ctx.beginPath();
+      ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+      ctx.fill();
+      ctx.closePath();
+  }
 
-// dibujar lienzo
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // dibujar pelota
-    drawBall();
-    // dibujar paleta
-    drawPaddle();
+  // dibujar lienzo
+  function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // dibujar pelota
+      drawBall();
+      // dibujar paleta
+      drawPaddle();
 
-    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-        dx = -dx;
-        // cambiar color
-        change_color();
-    }
-    if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
-        dy = -dy;
-        // cambiar color
-        change_color();
-    }
+      if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+          dx = -dx;
+          // cambiar color
+          change_color();
+      }
+      if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+          dy = -dy;
+          // cambiar color
+          change_color();
+      }
 
-    x += dx;
-    y += dy;
+      x += dx;
+      y += dy;
 
-    if(rightPressed && paddleX < canvas.width-paddleWidth) {
-    paddleX += 7;
-    }
-    else if(leftPressed && paddleX > 0) {
-        paddleX -= 7;
-    }    
-}
-//  La función draw() se ejecutará dentro de setInterval cada 10 milisegundos:
-setInterval(draw, 10);
-// Para "escuchar" las pulsaciones de las teclas necesitamos definir dos "escuchadores de eventos" (event listeners)
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
-// Cuando ocurra el evento keydown al pulsar cualquier tecla del teclado, la función keyDownHandler() se ejecutará. Cuando se liberará la tecla pulsada, se ejecutará la función keyUpHandler()
-function keyDownHandler(e) {
-    if(e.keyCode == 39) {
-        rightPressed = true;
-    }
-    else if(e.keyCode == 37) {
-        leftPressed = true;
-    }
-}
+      if(rightPressed && paddleX < canvas.width-paddleWidth) {
+      paddleX += 7;
+      }
+      else if(leftPressed && paddleX > 0) {
+          paddleX -= 7;
+      }
+  };
 
-function keyUpHandler(e) {
-    if(e.keyCode == 39) {
-        rightPressed = false;
-    }
-    else if(e.keyCode == 37) {
-        leftPressed = false;
-    }
-}
+  //  La función draw() se ejecutará dentro de setInterval cada 10 milisegundos. esto puede hacer que la perlota vaya más rápido si se vuelve a implementar
+  setInterval(draw, 10);
+
+  // Para "escuchar" las pulsaciones de las teclas necesitamos definir dos "escuchadores de eventos" (event listeners)
+  document.addEventListener("keydown", keyDownHandler, false);
+  document.addEventListener("keyup", keyUpHandler, false);
+  // Cuando ocurra el evento keydown al pulsar cualquier tecla del teclado, la función keyDownHandler() se ejecutará. Cuando se liberará la tecla pulsada, se ejecutará la función keyUpHandler()
+  function keyDownHandler(e) {
+      if(e.keyCode == 39) {
+          rightPressed = true;
+      }
+      else if(e.keyCode == 37) {
+          leftPressed = true;
+      }
+  }
+
+  function keyUpHandler(e) {
+      if(e.keyCode == 39) {
+          rightPressed = false;
+      }
+      else if(e.keyCode == 37) {
+          leftPressed = false;
+      }
+  }
+};
+// iniciar juego
+game();
