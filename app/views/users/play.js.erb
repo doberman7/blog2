@@ -17,7 +17,7 @@ function game(){
   var dx = 2;
   var dy = -2;
 
-  // Para facilitar los cálculos, definamos una variable llamada ballRadius que mantendrá el radio del círculo dibujado y se utilizará para los cálculos. Añade esto a tu código, en algún lugar por debajo de las declaraciones de variables existente
+  // Para facilitar los cálculos, definamos una variable llamada ballRadius que mantendrá el radio del círculo dibujado y se utilizará para los cálculos.
   var ballRadius = 10;
 
   //  paleta para golpear la bola, paddleHeight servirá para definir la altura de la paleta, paddleWidth la anchura y paddleX la posición en el eje X en la que empieza a dibujarse.
@@ -57,7 +57,7 @@ function game(){
       ctx.closePath();
   }
 
-  // dibujar lienzo
+  // jugar
   function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       // dibujar pelota
@@ -65,22 +65,44 @@ function game(){
       // dibujar paleta
       drawPaddle();
 
+      //hicimos que la pelota rebotara en las paredes:
       if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        // invertir valores significa "rebotar"
           dx = -dx;
           // cambiar color
           change_color();
       }
-      if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+
+      if( y + dy < ballRadius) {
           dy = -dy;
           // cambiar color
           change_color();
+      // detectar la colisión de la bola y la paleta para que pueda rebotar, volviendo hacia la zona de juego.
+      } else if(y + dy > canvas.height-ballRadius) {
+        // si el centro de la bola está entre los límites izquierdo y derecho de la paleta.
+          if(x > paddleX && x < paddleX + paddleWidth) {
+
+            // aumentar velozidad
+              dy += 1;
+
+
+            // rebotar
+              dy = -dy;
+
+          }
+          // activará el estado de "final de juego" cuando la pelota colisione con el borde inferior del terreno de juego
+          else {
+              alert("GAME OVER");
+              document.location.reload();
+          }
       }
 
       x += dx;
       y += dy;
-
+      // si flecha derecha es apretada y se mantiene dentro del lienzo
       if(rightPressed && paddleX < canvas.width-paddleWidth) {
-      paddleX += 7;
+        // moverse a la derecha con una velozidad...
+        paddleX += 7;
       }
       else if(leftPressed && paddleX > 0) {
           paddleX -= 7;
