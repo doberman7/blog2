@@ -55,30 +55,15 @@ function game(){
     }
     ctx.fillStyle = color;
   }
-
+// dibjar ladrillos
   var bricks = [];
   for(c=0; c<brickColumnCount; c++) {
       bricks[c] = [];
       for(r=0; r<brickRowCount; r++) {
-          bricks[c][r] = { x: 0, y: 0 };
+        bricks[c][r] = { x: 0, y: 0, status: 1 };
       }
   }
-  function drawBricks() {
-    for(c=0; c<brickColumnCount; c++) {
-        for(r=0; r<brickRowCount; r++) {
-            var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
-            var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
-            bricks[c][r].x = brickX;
-            bricks[c][r].y = brickY;
-            ctx.beginPath();
-            ctx.rect(brickX, brickY, brickWidth, brickHeight);
-            // colores aleatoriamente
-            // ctx.fillStyle = change_color();
-            ctx.fill();
-            ctx.closePath();
-        }
-    }
-  }
+
 
   // código para dibujar pelota
   function drawBall() {
@@ -98,6 +83,8 @@ function game(){
       drawBall();
       // dibujar paleta
       drawPaddle();
+
+      collisionDetection();
 
       //hicimos que la pelota rebotara en las paredes:
       if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
@@ -167,6 +154,39 @@ function game(){
           leftPressed = false;
       }
   }
+  function drawBricks() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            if(bricks[c][r].status == 1) {
+               var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+               var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+               bricks[c][r].x = brickX;
+               bricks[c][r].y = brickY;
+               ctx.beginPath();
+               ctx.rect(brickX, brickY, brickWidth, brickHeight);
+               // colorear aleatoriamente
+               // ctx.fillStyle = change_color();
+               ctx.fill();
+               ctx.closePath();
+           }
+        }
+    }
+  }
+  function collisionDetection() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            var b = bricks[c][r];
+            if(b.status == 1) {
+                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                    dy = -dy;
+                    b.status = 0;
+                    change_color();
+                }
+            }
+        }
+    }
+  }
 };
+
 // iniciar juego
 game();
