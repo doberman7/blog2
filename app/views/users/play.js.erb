@@ -37,6 +37,7 @@ function game(){
   var brickOffsetLeft = 30;
 
   var score = 0;
+  var lives = 3;
 
   // ------------------------------FUNCIONES
   // Guardaremos nuestros ladrillos en una matriz bidimensional que contendrá las columnas (c) de los ladrillos. Cada columna contendrá, a su vez, toda la fila (r) de ladrillos. Cada ladrillo se va a representar con un objeto con las posiciones "x" e "y" en las que se dibujará.
@@ -151,6 +152,11 @@ function game(){
         // ctx.fillStyle = "#0095DD";
         ctx.fillText("Score: "+score, 8, 20);
       }
+
+      function drawLives() {
+          // ctx.font = "16px Arial";
+          ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+      }
       // jugar
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -165,6 +171,7 @@ function game(){
         // mostrar score
         drawScore();
 
+        drawLives();
 
         //hicimos que la pelota rebotara en las paredes:
         if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
@@ -193,8 +200,18 @@ function game(){
           }
           // activará el estado de "final de juego" cuando la pelota colisione con el borde inferior del terreno de juego
           else {
-            alert("GAME OVER");
-            document.location.reload();
+            lives--;
+            if(!lives) {
+                alert("GAME OVER");
+                document.location.reload();
+            }
+            else {
+                x = canvas.width/2;
+                y = canvas.height-30;
+                dx = 2;
+                dy = -2;
+                paddleX = (canvas.width-paddleWidth)/2;
+            }
           }
         }
 
@@ -208,9 +225,12 @@ function game(){
         else if(leftPressed && paddleX > 0) {
           paddleX -= 7;
         }
+        // refrescar la imagen, llamandose así mismo
+        requestAnimationFrame(draw);
       };
       //  La función draw() se ejecutará dentro de setInterval cada 10 milisegundos. esto puede hacer que la perlota vaya más rápido si se vuelve a implementar
-      setInterval(draw, 10);
+      draw();
+
 
 //GAME FUNCION END's
 };
