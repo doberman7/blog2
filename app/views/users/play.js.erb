@@ -36,7 +36,7 @@ function game(){
   var brickOffsetTop = 30;
   var brickOffsetLeft = 30;
 
-
+  var score = 0;
 
   // ------------------------------FUNCIONES
   // función que dibujará la paleta en la pantalla
@@ -55,15 +55,6 @@ function game(){
     }
     ctx.fillStyle = color;
   }
-// dibjar ladrillos
-  var bricks = [];
-  for(c=0; c<brickColumnCount; c++) {
-      bricks[c] = [];
-      for(r=0; r<brickRowCount; r++) {
-        bricks[c][r] = { x: 0, y: 0, status: 1 };
-      }
-  }
-
 
   // código para dibujar pelota
   function drawBall() {
@@ -83,8 +74,11 @@ function game(){
       drawBall();
       // dibujar paleta
       drawPaddle();
-
+      // destruir ladrillo
       collisionDetection();
+      // mostrar score
+      drawScore();
+
 
       //hicimos que la pelota rebotara en las paredes:
       if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
@@ -154,10 +148,20 @@ function game(){
           leftPressed = false;
       }
   }
+// Guardaremos nuestros ladrillos en una matriz bidimensional que contendrá las columnas (c) de los ladrillos. Cada columna contendrá, a su vez, toda la fila (r) de ladrillos. Cada ladrillo se va a representar con un objeto con las posiciones "x" e "y" en las que se dibujará.
+    var bricks = [];
+    for(c=0; c<brickColumnCount; c++) {
+        bricks[c] = [];
+        for(r=0; r<brickRowCount; r++) {
+          bricks[c][r] = { x: 0, y: 0, status: 1 };
+        }
+    }
+// una función para recorrer todos los bloques de la matriz y dibujarlos en la pantalla:
   function drawBricks() {
     for(c=0; c<brickColumnCount; c++) {
         for(r=0; r<brickRowCount; r++) {
             if(bricks[c][r].status == 1) {
+              // calcular en qué posición "x" e "y" se tiene que dibujar cada ladrillo
                var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
                var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
                bricks[c][r].x = brickX;
@@ -172,6 +176,7 @@ function game(){
         }
     }
   }
+  // Función que, con un bucle, recorrerá todos los ladrillos y comparará la posición de cada uno con la posición de la bola, cada vez que se dibuje un fotograma. Para que el código sea más legible definiremos la variable "b" que almacenará el objeto ladrillo en cada vuelta de bucle:
   function collisionDetection() {
     for(c=0; c<brickColumnCount; c++) {
         for(r=0; r<brickRowCount; r++) {
@@ -181,11 +186,19 @@ function game(){
                     dy = -dy;
                     b.status = 0;
                     change_color();
+                    score++;
                 }
             }
         }
     }
   }
+
+  function drawScore() {
+    ctx.font = "16px Arial";
+    // ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: "+score, 8, 20);
+  }
+//fin game
 };
 
 // iniciar juego
