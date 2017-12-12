@@ -77,7 +77,7 @@ function game(){
               leftPressed = false;
           }
       }
-        
+
       // funcion para cambiar color de pelota y paleta aleatoriamente al tocar border: http://stackoverflow.com/questions/1484506/ddg#1484514
       function change_color(){
         var letters = '0123456789ABCDEF';
@@ -98,7 +98,7 @@ function game(){
                         b.status = 0;
                         change_color();
                         // aumentar puntos por 2
-                        score+=2;
+                        score++;
                         // mensaje de que has vencido
                         if(score == brickRowCount*brickColumnCount) {
                         // if(score == 4 ) {
