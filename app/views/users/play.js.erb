@@ -120,36 +120,37 @@ function game(){
       }
       // función que dibujará la paleta en la pantalla
       function drawPaddle() {
-      ctx.beginPath();
-      ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-      ctx.fill();
-      ctx.closePath();
+        ctx.beginPath();
+        ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+        ctx.fill();
+        ctx.closePath();
   }
       // una función para recorrer todos los bloques de la matriz y dibujarlos en la pantalla:
       function drawBricks() {
-      for(c=0; c<brickColumnCount; c++) {
-          for(r=0; r<brickRowCount; r++) {
-              if(bricks[c][r].status == 1) {
-                // calcular en qué posición "x" e "y" se tiene que dibujar cada ladrillo
-                 var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
-                 var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
-                 bricks[c][r].x = brickX;
-                 bricks[c][r].y = brickY;
-                 ctx.beginPath();
-                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                 // colorear aleatoriamente
-                 // ctx.fillStyle = change_color();
-                 ctx.fill();
-                 ctx.closePath();
-             }
-          }
+        for(c=0; c<brickColumnCount; c++) {
+            for(r=0; r<brickRowCount; r++) {
+                if(bricks[c][r].status == 1) {
+                  // calcular en qué posición "x" e "y" se tiene que dibujar cada ladrillo
+                   var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+                   var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                   bricks[c][r].x = brickX;
+                   bricks[c][r].y = brickY;
+                   ctx.beginPath();
+                   ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                   // colorear aleatoriamente
+                   // ctx.fillStyle = change_color();
+                   ctx.fill();
+                   ctx.closePath();
+               }
+            }
+        }
       }
-    }
+
       function drawScore() {
-      ctx.font = "16px Arial";
-      // ctx.fillStyle = "#0095DD";
-      ctx.fillText("Score: "+score, 8, 20);
-    }
+        ctx.font = "16px Arial";
+        // ctx.fillStyle = "#0095DD";
+        ctx.fillText("Score: "+score, 8, 20);
+      }
       // jugar
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
