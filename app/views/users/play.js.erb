@@ -186,7 +186,14 @@ function game(){
                     dy = -dy;
                     b.status = 0;
                     change_color();
-                    score++;
+                    // aumentar puntos por 2
+                    score+=2;
+                    // mensaje de que has vencido
+                    if(score == brickRowCount*brickColumnCount) {
+                    // if(score == 4 ) {
+                        alert("YOU WIN, CONGRATULATIONS! \n your score is: " + score);
+                        document.location.reload();
+                    }
                 }
             }
         }
