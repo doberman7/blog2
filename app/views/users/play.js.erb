@@ -39,173 +39,179 @@ function game(){
   var score = 0;
 
   // ------------------------------FUNCIONES
-  // función que dibujará la paleta en la pantalla
-  function drawPaddle() {
+  // Guardaremos nuestros ladrillos en una matriz bidimensional que contendrá las columnas (c) de los ladrillos. Cada columna contendrá, a su vez, toda la fila (r) de ladrillos. Cada ladrillo se va a representar con un objeto con las posiciones "x" e "y" en las que se dibujará.
+      var bricks = [];
+      for(c=0; c<brickColumnCount; c++) {
+          bricks[c] = [];
+          for(r=0; r<brickRowCount; r++) {
+            bricks[c][r] = { x: 0, y: 0, status: 1 };
+          }
+      }
+      // detectar movimiento del mouse
+      document.addEventListener("mousemove", mouseMoveHandler, false);
+      // Para "escuchar" las pulsaciones de las teclas necesitamos definir dos "escuchadores de eventos" (event listeners)
+      document.addEventListener("keydown", keyDownHandler, false);
+      document.addEventListener("keyup", keyUpHandler, false);
+
+      // obtner cordenas del puntero: En esta función calculamos un valor relativeX, que es la posición horizontal del ratón en el "viewport" (e.clientX), menos la distancia entre el borde izquierdo del terreno de juego y el borde izquierdo del "viewport" (canvas.offsetLeft).
+      function mouseMoveHandler(e) {
+        var relativeX = e.clientX - canvas.offsetLeft;
+        if(relativeX > 0 && relativeX < canvas.width) {
+            paddleX = relativeX - paddleWidth/2;
+        }
+      }
+      // Cuando ocurra el evento keydown al pulsar cualquier tecla del teclado, la función keyDownHandler() se ejecutará. Cuando se liberará la tecla pulsada, se ejecutará la función keyUpHandler()
+      function keyDownHandler(e) {
+        if(e.keyCode == 39) {
+          rightPressed = true;
+        }
+        else if(e.keyCode == 37) {
+          leftPressed = true;
+        }
+      }
+      function keyUpHandler(e) {
+          if(e.keyCode == 39) {
+              rightPressed = false;
+          }
+          else if(e.keyCode == 37) {
+              leftPressed = false;
+          }
+      }
+        
+      // funcion para cambiar color de pelota y paleta aleatoriamente al tocar border: http://stackoverflow.com/questions/1484506/ddg#1484514
+      function change_color(){
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        ctx.fillStyle = color;
+      }
+      // Función que, con un bucle, recorrerá todos los ladrillos y comparará la posición de cada uno con la posición de la bola, cada vez que se dibuje un fotograma. Para que el código sea más legible definiremos la variable "b" que almacenará el objeto ladrillo en cada vuelta de bucle:
+      function collisionDetection() {
+        for(c=0; c<brickColumnCount; c++) {
+            for(r=0; r<brickRowCount; r++) {
+                var b = bricks[c][r];
+                if(b.status == 1) {
+                    if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                        dy = -dy;
+                        b.status = 0;
+                        change_color();
+                        // aumentar puntos por 2
+                        score+=2;
+                        // mensaje de que has vencido
+                        if(score == brickRowCount*brickColumnCount) {
+                        // if(score == 4 ) {
+                            alert("YOU WIN, CONGRATULATIONS! \n your score is: " + score);
+                            document.location.reload();
+                        }
+                    }
+                }
+            }
+        }
+      }
+      // código para dibujar pelota
+      function drawBall() {
+        // el trayecto no es coloreado
+          ctx.beginPath();
+          ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+          ctx.fill();
+          ctx.closePath();
+      }
+      // función que dibujará la paleta en la pantalla
+      function drawPaddle() {
       ctx.beginPath();
       ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
       ctx.fill();
       ctx.closePath();
   }
-  // funcion para cambiar color de pelota y paleta aleatoriamente al tocar border: http://stackoverflow.com/questions/1484506/ddg#1484514
-  function change_color(){
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+      // una función para recorrer todos los bloques de la matriz y dibujarlos en la pantalla:
+      function drawBricks() {
+      for(c=0; c<brickColumnCount; c++) {
+          for(r=0; r<brickRowCount; r++) {
+              if(bricks[c][r].status == 1) {
+                // calcular en qué posición "x" e "y" se tiene que dibujar cada ladrillo
+                 var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+                 var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                 bricks[c][r].x = brickX;
+                 bricks[c][r].y = brickY;
+                 ctx.beginPath();
+                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                 // colorear aleatoriamente
+                 // ctx.fillStyle = change_color();
+                 ctx.fill();
+                 ctx.closePath();
+             }
+          }
+      }
     }
-    ctx.fillStyle = color;
-  }
-
-  // código para dibujar pelota
-  function drawBall() {
-    // el trayecto no es coloreado
-      ctx.beginPath();
-      ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-      ctx.fill();
-      ctx.closePath();
-  }
-
-  // jugar
-  function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      // dibujar ladrillos
-      drawBricks();
-      // dibujar pelota
-      drawBall();
-      // dibujar paleta
-      drawPaddle();
-      // destruir ladrillo
-      collisionDetection();
-      // mostrar score
-      drawScore();
+      function drawScore() {
+      ctx.font = "16px Arial";
+      // ctx.fillStyle = "#0095DD";
+      ctx.fillText("Score: "+score, 8, 20);
+    }
+      // jugar
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // dibujar ladrillos
+        drawBricks();
+        // dibujar pelota
+        drawBall();
+        // dibujar paleta
+        drawPaddle();
+        // destruir ladrillo
+        collisionDetection();
+        // mostrar score
+        drawScore();
 
 
-      //hicimos que la pelota rebotara en las paredes:
-      if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-        // invertir valores significa "rebotar"
+        //hicimos que la pelota rebotara en las paredes:
+        if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+          // invertir valores significa "rebotar"
           dx = -dx;
           // cambiar color
           change_color();
-      }
+        }
 
-      if( y + dy < ballRadius) {
+        if( y + dy < ballRadius) {
           dy = -dy;
           // cambiar color
           change_color();
-      // detectar la colisión de la bola y la paleta para que pueda rebotar, volviendo hacia la zona de juego.
-      } else if(y + dy > canvas.height-ballRadius) {
-        // si el centro de la bola está entre los límites izquierdo y derecho de la paleta.
+          // detectar la colisión de la bola y la paleta para que pueda rebotar, volviendo hacia la zona de juego.
+        } else if(y + dy > canvas.height-ballRadius) {
+          // si el centro de la bola está entre los límites izquierdo y derecho de la paleta.
           if(x > paddleX && x < paddleX + paddleWidth) {
 
             // aumentar velozidad
-              dy += 1;
+            dy += 1;
 
 
             // rebotar
-              dy = -dy;
+            dy = -dy;
 
           }
           // activará el estado de "final de juego" cuando la pelota colisione con el borde inferior del terreno de juego
           else {
-              alert("GAME OVER");
-              document.location.reload();
+            alert("GAME OVER");
+            document.location.reload();
           }
-      }
+        }
 
-      x += dx;
-      y += dy;
-      // si flecha derecha es apretada y se mantiene dentro del lienzo
-      if(rightPressed && paddleX < canvas.width-paddleWidth) {
-        // moverse a la derecha con una velozidad...
-        paddleX += 7;
-      }
-      else if(leftPressed && paddleX > 0) {
+        x += dx;
+        y += dy;
+        // si flecha derecha es apretada y se mantiene dentro del lienzo
+        if(rightPressed && paddleX < canvas.width-paddleWidth) {
+          // moverse a la derecha con una velozidad...
+          paddleX += 7;
+        }
+        else if(leftPressed && paddleX > 0) {
           paddleX -= 7;
-      }
-  };
-
-  //  La función draw() se ejecutará dentro de setInterval cada 10 milisegundos. esto puede hacer que la perlota vaya más rápido si se vuelve a implementar
-  setInterval(draw, 10);
-
-  // Para "escuchar" las pulsaciones de las teclas necesitamos definir dos "escuchadores de eventos" (event listeners)
-  document.addEventListener("keydown", keyDownHandler, false);
-  document.addEventListener("keyup", keyUpHandler, false);
-  // Cuando ocurra el evento keydown al pulsar cualquier tecla del teclado, la función keyDownHandler() se ejecutará. Cuando se liberará la tecla pulsada, se ejecutará la función keyUpHandler()
-  function keyDownHandler(e) {
-      if(e.keyCode == 39) {
-          rightPressed = true;
-      }
-      else if(e.keyCode == 37) {
-          leftPressed = true;
-      }
-  }
-
-  function keyUpHandler(e) {
-      if(e.keyCode == 39) {
-          rightPressed = false;
-      }
-      else if(e.keyCode == 37) {
-          leftPressed = false;
-      }
-  }
-// Guardaremos nuestros ladrillos en una matriz bidimensional que contendrá las columnas (c) de los ladrillos. Cada columna contendrá, a su vez, toda la fila (r) de ladrillos. Cada ladrillo se va a representar con un objeto con las posiciones "x" e "y" en las que se dibujará.
-    var bricks = [];
-    for(c=0; c<brickColumnCount; c++) {
-        bricks[c] = [];
-        for(r=0; r<brickRowCount; r++) {
-          bricks[c][r] = { x: 0, y: 0, status: 1 };
         }
-    }
-// una función para recorrer todos los bloques de la matriz y dibujarlos en la pantalla:
-  function drawBricks() {
-    for(c=0; c<brickColumnCount; c++) {
-        for(r=0; r<brickRowCount; r++) {
-            if(bricks[c][r].status == 1) {
-              // calcular en qué posición "x" e "y" se tiene que dibujar cada ladrillo
-               var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
-               var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
-               bricks[c][r].x = brickX;
-               bricks[c][r].y = brickY;
-               ctx.beginPath();
-               ctx.rect(brickX, brickY, brickWidth, brickHeight);
-               // colorear aleatoriamente
-               // ctx.fillStyle = change_color();
-               ctx.fill();
-               ctx.closePath();
-           }
-        }
-    }
-  }
-  // Función que, con un bucle, recorrerá todos los ladrillos y comparará la posición de cada uno con la posición de la bola, cada vez que se dibuje un fotograma. Para que el código sea más legible definiremos la variable "b" que almacenará el objeto ladrillo en cada vuelta de bucle:
-  function collisionDetection() {
-    for(c=0; c<brickColumnCount; c++) {
-        for(r=0; r<brickRowCount; r++) {
-            var b = bricks[c][r];
-            if(b.status == 1) {
-                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
-                    dy = -dy;
-                    b.status = 0;
-                    change_color();
-                    // aumentar puntos por 2
-                    score+=2;
-                    // mensaje de que has vencido
-                    if(score == brickRowCount*brickColumnCount) {
-                    // if(score == 4 ) {
-                        alert("YOU WIN, CONGRATULATIONS! \n your score is: " + score);
-                        document.location.reload();
-                    }
-                }
-            }
-        }
-    }
-  }
+      };
+      //  La función draw() se ejecutará dentro de setInterval cada 10 milisegundos. esto puede hacer que la perlota vaya más rápido si se vuelve a implementar
+      setInterval(draw, 10);
 
-  function drawScore() {
-    ctx.font = "16px Arial";
-    // ctx.fillStyle = "#0095DD";
-    ctx.fillText("Score: "+score, 8, 20);
-  }
-//fin game
+//GAME FUNCION END's
 };
 
 // iniciar juego
