@@ -40,6 +40,26 @@ function game(){
   var lives = 3;
 
   // ------------------------------FUNCIONES
+
+  // http://htmlcheats.com/html/resize-the-html5-canvas-dyamically/
+  // Display custom canvas.
+  // In this case it's a blue, 5 pixel border that
+  // resizes along with the browser window.
+  function redraw() {
+    ctx.strokeStyle = 'blue';
+    ctx.lineWidth = '5';
+    ctx.strokeRect(0, 0, $(".modal-body").width(), $(".modal-body").height());
+  }
+
+  // Runs each time the DOM window resize event fires.
+  // Resets the canvas dimensions to match window,
+  // then draws the new borders accordingly.
+  function resizeCanvas() {
+    canvas.width = $(".modal-body").width();
+    canvas.height = $(".modal-body").height();
+    redraw();
+  }
+
   // Guardaremos nuestros ladrillos en una matriz bidimensional que contendrá las columnas (c) de los ladrillos. Cada columna contendrá, a su vez, toda la fila (r) de ladrillos. Cada ladrillo se va a representar con un objeto con las posiciones "x" e "y" en las que se dibujará.
       var bricks = [];
       for(c=0; c<brickColumnCount; c++) {
@@ -159,7 +179,13 @@ function game(){
       }
       // jugar
       function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        window.addEventListener('resize', resizeCanvas, false);
+
+				// Draw canvas border for the first time.
+				resizeCanvas();
+
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
         // dibujar ladrillos
         drawBricks();
         // dibujar pelota
@@ -228,6 +254,9 @@ function game(){
         // refrescar la imagen, llamandose así mismo
         requestAnimationFrame(draw);
       };
+
+      // canvas.style.backgroundColor = "#1a8b51";
+      // alert(change_color);
       //  La función draw() se ejecutará dentro de setInterval cada 10 milisegundos. esto puede hacer que la perlota vaya más rápido si se vuelve a implementar
       draw();
 
