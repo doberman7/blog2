@@ -6,6 +6,12 @@ function game(){
   var jugar = 0
   // variable con lienzo
   var canvas = document.getElementById("myCanvas");
+
+  // dimenciones de http://htmlcheats.com/html/resize-the-html5-canvas-dyamically/
+  // width="480" height="320"
+  // el ancho es equivalente al grueso del la vista modal
+  canvas.width = $(".modal-body").width();
+  canvas.height = 320;
   // The getContext() method returns an object that provides methods and properties for drawing on the canvas. the getContext("2d") object, which can be used to draw text, lines, boxes, circles, and more - on the canvas.
   //ctx: It is a shorthand for the word "context"
   var ctx = canvas.getContext("2d");
@@ -28,7 +34,7 @@ function game(){
   var rightPressed = false;
   var leftPressed = false;
 
-  var brickRowCount = 3;
+  var brickRowCount = 5;
   var brickColumnCount = 3;
   var brickWidth = 75;
   var brickHeight = 20;
@@ -38,12 +44,6 @@ function game(){
 
   var score = 0;
   var lives = 3;
-
-  // dimenciones de http://htmlcheats.com/html/resize-the-html5-canvas-dyamically/
-  // width="480" height="320"
-  // el ancho es equivalente al grueso del la vista modal
-  canvas.width = $(".modal-body").width();
-  canvas.height = 320;
 
   // ------------------------------FUNCIONES
   // Guardaremos nuestros ladrillos en una matriz bidimensional que contendrá las columnas (c) de los ladrillos. Cada columna contendrá, a su vez, toda la fila (r) de ladrillos. Cada ladrillo se va a representar con un objeto con las posiciones "x" e "y" en las que se dibujará.
