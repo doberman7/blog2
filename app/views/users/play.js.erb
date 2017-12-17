@@ -237,13 +237,16 @@ function game(){
         }
         // refrescar la imagen, llamandose así mismo
         requestAnimationFrame(draw);
-        // cambiar color de fondo aleatoriamente
-        canvas.style.backgroundColor = random_color();
+
       };
       //  La función draw() se ejecutará dentro de setInterval cada 10 milisegundos. esto puede hacer que la perlota vaya más rápido si se vuelve a implementar
       draw();
-
-
+      // intervalo para cambiar fondo del canva
+      setInterval(function(){
+        // cambiar color de fondo aleatoriamente
+        canvas.style.backgroundColor = random_color();
+        }, 1000
+      );
 //GAME FUNCION END's
 };
 
