@@ -86,13 +86,17 @@ function game(){
       }
 
       // funcion para cambiar color de pelota y paleta aleatoriamente al tocar border: http://stackoverflow.com/questions/1484506/ddg#1484514
-      function change_color(){
+      function random_color() {
         var letters = '0123456789ABCDEF';
         var color = '#';
         for (var i = 0; i < 6; i++) {
           color += letters[Math.floor(Math.random() * 16)];
         }
-        ctx.fillStyle = color;
+        return color;
+      }
+
+      function change_color(){
+        ctx.fillStyle = random_color();
       }
       // Función que, con un bucle, recorrerá todos los ladrillos y comparará la posición de cada uno con la posición de la bola, cada vez que se dibuje un fotograma. Para que el código sea más legible definiremos la variable "b" que almacenará el objeto ladrillo en cada vuelta de bucle:
       function collisionDetection() {
@@ -233,6 +237,8 @@ function game(){
         }
         // refrescar la imagen, llamandose así mismo
         requestAnimationFrame(draw);
+        // cambiar color de fondo aleatoriamente
+        canvas.style.backgroundColor = random_color();
       };
       //  La función draw() se ejecutará dentro de setInterval cada 10 milisegundos. esto puede hacer que la perlota vaya más rápido si se vuelve a implementar
       draw();
