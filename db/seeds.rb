@@ -12,7 +12,7 @@ id = 1
 10.times do
 	p Message.create!(autor: Faker::Friends.character,title: Faker::Music.instrument, text: Faker::ChuckNorris.fact, user_id: id = id + 1)
 	p Tag.create!(name: Faker::Name.unique.name)
-	p Game.create!(number: id, datetime: DateTime.now, user_id: id)
+	p Game.create!(number: id, time: Time.now, user_id: id)
 end
 
 10.times do
