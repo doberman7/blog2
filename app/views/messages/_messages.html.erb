@@ -1,5 +1,3 @@
-
-
 <table class="table">
     <thead>
       <tr>
@@ -22,7 +20,7 @@
           <td ><%=index += 1 %></td>
           <td><%=message.autor.capitalize%></td>
           <td><%=message.title.capitalize%></td>
-          <td><%=message.text.capitalize%></td>
+          <td style="width:10em" ><%=message.text.capitalize%></td>
           <td><%=message.tags.count%></td>
           <td>
               <%message.tags.each do |t|%>
