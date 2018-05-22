@@ -1,6 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+// texto de titulos en la tabla
+#titles{
+  color: ghostwhite;
+}
+
+// tabla centrada para que no se desvorde
+#tabla_texto{
+  width:10em;
+}
+
 #nasa {
     background: #3641d6;
     width: 50%;
@@ -89,9 +100,6 @@
     }
 }
 
-
-
-
 .fb-like{
   text-align: center;
 }
@@ -125,7 +133,7 @@
 
 body{
   // puente2.png es mas delgado
-  background-image: image-url("puente2.png");
+  // background-image: image-url("puente2.png");
   // para usar en CHANGO
   // background-image: asset-url("chango.svg");
   // background: url(chango.svg);

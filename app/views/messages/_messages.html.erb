@@ -1,6 +1,6 @@
 <table class="table">
     <thead>
-      <tr>
+      <tr id="titles">
         <td>#</td>
         <th>Autor</th>
         <th>Titulo</th>
@@ -20,7 +20,8 @@
           <td ><%=index += 1 %></td>
           <td><%=message.autor.capitalize%></td>
           <td><%=message.title.capitalize%></td>
-          <td style="width:10em" ><%=message.text.capitalize%></td>
+          <!-- el id sirve para aplicar estilo centrado al texto -->
+          <td id="tabla_texto" ><%=message.text.capitalize%></td>
           <td><%=message.tags.count%></td>
           <td>
               <%message.tags.each do |t|%>
