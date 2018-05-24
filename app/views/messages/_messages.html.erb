@@ -2,7 +2,7 @@
 
 <table class="table">
     <thead>
-      <tr>
+      <tr id="titles">
         <td>#</td>
         <th>Autor</th>
         <th>Titulo</th>
@@ -22,7 +22,7 @@
           <td ><%=index += 1 %></td>
           <td><%=message.autor.capitalize%></td>
           <td><%=message.title.capitalize%></td>
-          <td><%=message.text.capitalize%></td>
+          <td id="tabla_texto"><%=message.text.capitalize%></td>
           <td><%=message.tags.count%></td>
           <td>
               <%message.tags.each do |t|%>

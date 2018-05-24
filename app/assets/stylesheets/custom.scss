@@ -1,6 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+// texto de titulos en la tabla
+#titles{
+  color: ghostwhite;
+}
+
+// tabla centrada para que no se desvorde
+#tabla_texto{
+  width:100px;
+}
+
 // en el partial de mensajes ocultamos el botom de prueba para openPay
 #btn-openPay{
   display: none;
@@ -84,9 +95,6 @@
     }
 }
 
-
-
-
 .fb-like{
   text-align: center;
 }
@@ -109,7 +117,8 @@
 }
 
 .gif{
-    display: none;
+  // descomentar para mostrar imagen
+    // display: none;
     position: relative;
     // width: 100px;
     // height: 100px;
@@ -119,7 +128,7 @@
 
 body{
   // puente2.png es mas delgado
-  background-image: image-url("puente2.png");
+  // background-image: image-url("puente2.png");
   // para usar en CHANGO
   // background-image: asset-url("chango.svg");
   // background: url(chango.svg);
@@ -188,7 +197,7 @@ body{
     position: relative;
     left: -50%;
     text-align: center;
-    padding: 2.8875rem 1.75rem 1.3875rem 1.75rem ;
+    // padding: 2.8875rem 1.75rem 1.3875rem 1.75rem ;
     -moz-flex-basis: 60%;
     -webkit-flex-basis: 60%;
     -ms-flex-basis: 60%;
