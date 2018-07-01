@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  get '/users/nasa', to: "users#nasa", as: 'nasa' 
   # ruta para jugar, botón amarillo
   get '/users/play', to: "users#play", as: 'play'
   # deslogearse de la pagina

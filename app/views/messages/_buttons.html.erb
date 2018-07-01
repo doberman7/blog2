@@ -4,6 +4,8 @@
 <br>
 
 <%= button_to "Jugar", play_path , class: "btn btn-warning" ,:method => :get, remote: true %>
+<br>
+<%= button_to "Nasa", nasa_path , class: "btn btn-info" ,:method => :get, remote: true %>
 
 <%= button_to "Donar dinero a Ivan", messages_openpay_path,id: "btn-openPay", class: "btn btn-info" ,:method => :get, remote: true %>
 
